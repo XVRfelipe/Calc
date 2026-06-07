@@ -3,319 +3,320 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quarry - Startup marketplace</title>
+    <title>Calc - Startup Discovery</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=framer-simple-nav" />
   </head>
   <body>
-    <header class="site-header">
-      <nav class="nav-shell" aria-label="Main navigation">
-        <a class="brand" href="#">
-          <img src="assets/quarry-logo.svg" alt="Quarry logo" />
-          <span class="brand-copy">
-            <strong>Quarry</strong>
-            <em>Market intelligence</em>
-          </span>
+    <main class="page">
+      <header class="top-nav">
+        <a class="brand" href="#" aria-label="Calc home">
+          <img src="assets/calc-logo.png" alt="Calc logo" />
         </a>
 
-        <div class="nav-center">
-          <span class="signal-pill">
-            <span class="signal-dot"></span>
-            Q Signal
-            <small>1,761 indexed</small>
-          </span>
+        <nav class="main-links" aria-label="Main navigation">
+          <a class="active" href="#">Discover</a>
+          <a href="#">Categories</a>
+          <a href="#">Founders</a>
+          <a href="#">Submit</a>
+        </nav>
 
-          <div class="nav-links">
-            <a class="active" href="#">Radar</a>
-            <a href="#">Lançamentos⌄</a>
-            <a href="#">Análises⌄</a>
+        <div class="nav-actions">
+          <button class="submit-startup" type="button">+ Submit startup</button>
+          <button class="avatar-circle" type="button" aria-label="Open profile"></button>
+        </div>
+      </header>
+
+      <section class="hero" aria-label="Calc discovery hero">
+        <h1>
+          Startup discovery for founders,
+          <br />
+          operators, and curious builders
+        </h1>
+        <p>
+          Explore curated products, market signals, revenue notes,
+          <br />
+          and internet businesses worth studying.
+        </p>
+
+        <form class="hero-search">
+          <label for="site-search">Search products</label>
+          <span>&#8981;</span>
+          <input id="site-search" type="search" placeholder="Search..." />
+        </form>
+      </section>
+
+      <section class="categories" aria-label="Startup categories">
+        <div class="section-title">
+          <h2>Categories</h2>
+          <a href="#">See All -></a>
+        </div>
+
+        <div class="template-grid">
+          <article class="template-card">
+            <div class="preview preview-one">
+              <div class="browser-frame">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <h3>AI workflow OS</h3>
+              <p>Operations tools with real adoption signals</p>
+            </div>
+            <div class="mini-row">
+              <div>Gryo</div>
+              <div>Data desk</div>
+            </div>
+          </article>
+
+          <article class="template-card">
+            <div class="preview preview-two">
+              <h3>Founder stack</h3>
+              <p>Tools for teams building faster with less overhead</p>
+              <span>View signal -></span>
+            </div>
+            <div class="mini-row">
+              <div>Purevisuals</div>
+              <div>Billie Duvalle</div>
+            </div>
+          </article>
+
+          <article class="template-card">
+            <div class="preview preview-three">
+              <div class="laptop-mock"></div>
+              <h3>Launch rooms</h3>
+              <p>Products with strong early traction</p>
+            </div>
+            <div class="mini-row">
+              <div>Briefly</div>
+              <div>Offscreen</div>
+            </div>
+          </article>
+
+          <article class="template-card">
+            <div class="preview preview-four">
+              <h3>Lucas Miller</h3>
+              <p>Personal brands, newsletters, and solo businesses</p>
+            </div>
+            <div class="mini-row">
+              <div>Fabrica</div>
+              <div>Solid Startups</div>
+            </div>
+          </article>
+
+          <article class="template-card">
+            <div class="preview preview-five">
+              <div class="portrait"></div>
+              <h3>Operator tools</h3>
+              <p>Quiet products solving expensive workflow problems</p>
+            </div>
+            <div class="mini-row">
+              <div>Lando Sullivan</div>
+              <div>Tyrone Brooks</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="catalog" aria-label="Startup catalog">
+        <div class="catalog-toolbar">
+          <div class="filter-group">
+            <button class="chip" type="button">Pricing <span aria-hidden="true">&#9662;</span></button>
+            <button class="chip" type="button">Styles <span aria-hidden="true">&#9662;</span></button>
+            <button class="chip" type="button">Features <span aria-hidden="true">&#9662;</span></button>
+          </div>
+          <div class="filter-group">
+            <button class="chip" type="button">Popular <span aria-hidden="true">&#9662;</span></button>
+            <button class="chip" type="button">Last Week <span aria-hidden="true">&#9662;</span></button>
           </div>
         </div>
 
-        <a class="send-button" href="#">＋ Enviar</a>
-        <button class="notify-button" type="button" aria-label="Notifications">
-          ◯
-        </button>
-        <div class="avatar" aria-label="Profile"></div>
-      </nav>
-    </header>
-
-    <section class="ask-bar" aria-label="Ask Quarry">
-      <form>
-        <label for="ask">Ask Quarry</label>
-        <input id="ask" type="search" placeholder="Procure um produto que faça..." />
-        <button type="submit">↗ Perguntar</button>
-      </form>
-    </section>
-
-    <main class="content">
-      <section class="launching-section">
-        <div class="launch-intro">
-          <h1>Search products worth studying.</h1>
-          <p>Explore startups, apps, and tools by revenue, traction, category, and launch signal.</p>
-        </div>
-
-        <div class="market-layout">
-          <div class="launch-grid">
-            <article class="launch-card">
-            <div class="launch-head">
-              <div class="launch-logo logo-video">▶</div>
-              <div>
-                <h2>Video Compressor</h2>
-                <span>Productivity</span>
+        <div class="catalog-grid">
+          <article class="startup-card">
+            <div class="thumb thumb-producthub">
+              <span class="badge">FEATURED</span>
+              <div class="thumb-stack">
+                <div class="thumb-tile tile-alien">
+                  <span class="tile-tag">Maya</span>
+                  <span class="tile-name">Dirk</span>
+                  <span class="tile-price">$139.99 value</span>
+                </div>
+                <div class="thumb-tile tile-furry">
+                  <span class="tile-tag">Cinema 4D</span>
+                  <span class="tile-name">Furry Felix</span>
+                  <span class="tile-price">$99.99 value</span>
+                  <span class="tile-free">Free</span>
+                </div>
               </div>
             </div>
-            <p>Online Video Compressor: Compress Video Size, No Upload</p>
-            <div class="launch-meta">
-              <span class="stars">★★★★☆</span>
-              <strong>4.7</strong>
-              <span class="revenue"><em>MRR</em>$8.2k</span>
-              <span>128 votes</span>
-              <span>24 comments</span>
-            </div>
-            <div class="launch-status">
-              <strong>Launches tomorrow</strong>
-              <span>Fri, Jun 5, 2026</span>
-              <span class="signal-label good">Rising</span>
+            <div class="card-body">
+              <div class="card-head">
+                <h3>ProductHub</h3>
+                <button class="like-button" type="button" aria-label="Like ProductHub" aria-pressed="false">
+                  <span>&#9889;</span>
+                </button>
+              </div>
+              <p class="spec">3D Asset Marketplace</p>
+              <div class="mrr-line"><span>MRR</span> $48k</div>
             </div>
           </article>
 
-            <article class="launch-card">
-            <div class="launch-head">
-              <div class="launch-logo logo-duo">D</div>
-              <div>
-                <h2>DuoPlus Cloud Phone</h2>
-                <span>Productivity</span>
+          <article class="startup-card">
+            <div class="thumb thumb-opurent">
+              <div class="thumb-eye"></div>
+              <div class="thumb-copy">
+                <span class="thumb-eyebrow">Luxury Car Rental</span>
+                <strong>Drive Beyond Limits<br />Live Beyond Time</strong>
               </div>
             </div>
-            <p>Antidetect Phone Antidetect Cloud Phone for Multi-Accounts</p>
-            <div class="launch-meta">
-              <span class="stars">★★★★★</span>
-              <strong>4.9</strong>
-              <span class="revenue"><em>MRR</em>$21.5k</span>
-              <span>214 votes</span>
-              <span>38 comments</span>
-            </div>
-            <div class="launch-status">
-              <strong>Launches tomorrow</strong>
-              <span>Fri, Jun 5, 2026</span>
-              <span class="signal-label good">Rising</span>
+            <div class="card-body">
+              <div class="card-head">
+                <h3>Opurent</h3>
+                <button class="like-button" type="button" aria-label="Like Opurent" aria-pressed="false">
+                  <span>&#9889;</span>
+                </button>
+              </div>
+              <p class="spec">Premium Rentals</p>
+              <div class="mrr-line"><span>MRR</span> $22k</div>
             </div>
           </article>
 
-            <article class="launch-card">
-            <div class="launch-head">
-              <div class="launch-logo logo-ofox">◇</div>
-              <div>
-                <h2>OfoxAI</h2>
-                <span>AI &amp; ML</span>
+          <article class="startup-card">
+            <div class="thumb thumb-coursehub">
+              <div class="thumb-sidebar">
+                <div class="sidebar-row sidebar-row-active"></div>
+                <div class="sidebar-row"></div>
+                <div class="sidebar-row"></div>
+                <div class="sidebar-row"></div>
               </div>
+              <div class="thumb-main"></div>
             </div>
-            <p>OfoxAI - One API key for 100+ LLMs. OpenAI-compatible</p>
-            <div class="launch-meta">
-              <span class="stars">★★★★☆</span>
-              <strong>4.6</strong>
-              <span class="revenue"><em>MRR</em>$4.8k</span>
-              <span>96 votes</span>
-              <span>17 comments</span>
-            </div>
-            <div class="launch-status">
-              <strong>Launches tomorrow</strong>
-              <span>Fri, Jun 5, 2026</span>
-              <span class="signal-label bad">Cooling</span>
+            <div class="card-body">
+              <div class="card-head">
+                <h3>CourseHub</h3>
+                <button class="like-button" type="button" aria-label="Like CourseHub" aria-pressed="false">
+                  <span>&#9889;</span>
+                </button>
+              </div>
+              <p class="spec">EdTech Platform</p>
+              <div class="mrr-line"><span>MRR</span> $12k</div>
             </div>
           </article>
 
-            <article class="launch-card">
-            <div class="launch-head">
-              <div class="launch-logo logo-pad">↗</div>
-              <div>
-                <h2>LaunchPad India</h2>
-                <span>Productivity</span>
+          <article class="startup-card">
+            <div class="thumb thumb-amber">
+              <span class="thumb-headline">AMBER STUDIO</span>
+            </div>
+            <div class="card-body">
+              <div class="card-head">
+                <h3>Amber</h3>
+                <button class="like-button" type="button" aria-label="Like Amber" aria-pressed="false">
+                  <span>&#9889;</span>
+                </button>
               </div>
-            </div>
-            <p>Discover &amp; Launch India's Best Products</p>
-            <div class="launch-meta">
-              <span class="stars">★★★★☆</span>
-              <strong>4.5</strong>
-              <span class="revenue"><em>MRR</em>$2.1k</span>
-              <span>74 votes</span>
-              <span>11 comments</span>
-            </div>
-            <div class="launch-status">
-              <strong>Launches tomorrow</strong>
-              <span>Fri, Jun 5, 2026</span>
-              <span class="signal-label bad">Watch</span>
+              <p class="spec">Creative Studio</p>
+              <div class="mrr-line"><span>MRR</span> $31k</div>
             </div>
           </article>
 
-            <article class="launch-card">
-            <div class="launch-head">
-              <div class="launch-logo logo-brewer">AI</div>
-              <div>
-                <h2>AI Brewer Community</h2>
-                <span>Other</span>
+          <article class="startup-card">
+            <div class="thumb thumb-probe">
+              <div class="probe-nav"></div>
+              <div class="probe-headline">
+                <strong>Build smarter.</strong>
+                <strong>Move faster.</strong>
+              </div>
+              <div class="probe-cta">
+                <span></span><span></span>
               </div>
             </div>
-            <p>Cap it Like an AI Brewer</p>
-            <div class="launch-meta">
-              <span class="stars">★★★★★</span>
-              <strong>4.8</strong>
-              <span class="revenue"><em>MRR</em>$14.7k</span>
-              <span>181 votes</span>
-              <span>29 comments</span>
-            </div>
-            <div class="launch-status">
-              <strong>Launches tomorrow</strong>
-              <span>Fri, Jun 5, 2026</span>
-              <span class="signal-label good">Rising</span>
+            <div class="card-body">
+              <div class="card-head">
+                <h3>Probe</h3>
+                <button class="like-button" type="button" aria-label="Like Probe" aria-pressed="false">
+                  <span>&#9889;</span>
+                </button>
+              </div>
+              <p class="spec">Dev Infrastructure</p>
+              <div class="mrr-line"><span>MRR</span> $8.4k</div>
             </div>
           </article>
 
-            <article class="launch-card">
-            <div class="launch-head">
-              <div class="launch-logo logo-nexa">▣</div>
-              <div>
-                <h2>Nexalink</h2>
-                <span>Analytics</span>
+          <article class="startup-card">
+            <div class="thumb thumb-rowanx">
+              <div class="rowanx-portrait"></div>
+              <div class="rowanx-copy">
+                <span class="thumb-eyebrow">Rowan Blake</span>
+                <strong>Shaping bold brands<br />for the digital age.</strong>
               </div>
             </div>
-            <p>Turn networking into long-term relationships.</p>
-            <div class="launch-meta">
-              <span class="stars">★★★★☆</span>
-              <strong>4.4</strong>
-              <span class="revenue"><em>MRR</em>$6.4k</span>
-              <span>62 votes</span>
-              <span>9 comments</span>
-            </div>
-            <div class="launch-status">
-              <strong>Launches tomorrow</strong>
-              <span>Fri, Jun 5, 2026</span>
-              <span class="signal-label good">Healthy</span>
+            <div class="card-body">
+              <div class="card-head">
+                <h3>Rowan X</h3>
+                <button class="like-button" type="button" aria-label="Like Rowan X" aria-pressed="false">
+                  <span>&#9889;</span>
+                </button>
+              </div>
+              <p class="spec">Brand Studio</p>
+              <div class="mrr-line"><span>MRR</span> $17k</div>
             </div>
           </article>
 
-            <article class="launch-card">
-            <div class="launch-head">
-              <div class="launch-logo logo-tool">TL</div>
-              <div>
-                <h2>toollisted</h2>
-                <span>Productivity</span>
+          <article class="startup-card">
+            <div class="thumb thumb-elrune">
+              <div class="elrune-img"></div>
+              <div class="elrune-copy">
+                <strong>Luxury interiors<br />for iconic <em>living</em></strong>
               </div>
             </div>
-            <p>Submit your AI tool and get discovered with SEO-friendly bac</p>
-            <div class="launch-meta">
-              <span class="stars">★★★★☆</span>
-              <strong>4.3</strong>
-              <span class="revenue"><em>MRR</em>$1.8k</span>
-              <span>51 votes</span>
-              <span>8 comments</span>
-            </div>
-            <div class="launch-status">
-              <strong>Launches tomorrow</strong>
-              <span>Fri, Jun 5, 2026</span>
-              <span class="signal-label bad">Cooling</span>
+            <div class="card-body">
+              <div class="card-head">
+                <h3>Elrune</h3>
+                <button class="like-button" type="button" aria-label="Like Elrune" aria-pressed="false">
+                  <span>&#9889;</span>
+                </button>
+              </div>
+              <p class="spec">Interior Design</p>
+              <div class="mrr-line"><span>MRR</span> $54k</div>
             </div>
           </article>
 
-            <article class="launch-card">
-            <div class="launch-head">
-              <div class="launch-logo logo-salesforce">☁</div>
-              <div>
-                <h2>Salesforce Dictionary</h2>
-                <span>Education</span>
+          <article class="startup-card">
+            <div class="thumb thumb-clipzy">
+              <div class="clipzy-mock">
+                <div class="clipzy-screen"></div>
               </div>
+              <span class="thumb-headline-sm">Agency that makes your <em>videos &amp; reels</em> viral</span>
             </div>
-            <p>Learn Salesforce: Certifications, News, Blogs</p>
-            <div class="launch-meta">
-              <span class="stars">★★★★★</span>
-              <strong>4.9</strong>
-              <span class="revenue"><em>MRR</em>$18.9k</span>
-              <span>142 votes</span>
-              <span>21 comments</span>
-            </div>
-            <div class="launch-status">
-              <strong>Launches tomorrow</strong>
-              <span>Fri, Jun 5, 2026</span>
-              <span class="signal-label good">Rising</span>
+            <div class="card-body">
+              <div class="card-head">
+                <h3>Clipzy</h3>
+                <button class="like-button" type="button" aria-label="Like Clipzy" aria-pressed="false">
+                  <span>&#9889;</span>
+                </button>
+              </div>
+              <p class="spec">Video Agency</p>
+              <div class="mrr-line"><span>MRR</span> $26k</div>
             </div>
           </article>
-
-            <article class="launch-card">
-            <div class="launch-head">
-              <div class="launch-logo logo-insta">iL</div>
-              <div>
-                <h2>InstaLead</h2>
-                <span>Marketing</span>
-              </div>
-            </div>
-            <p>Instagram lead generation with pacing guardrails</p>
-            <div class="launch-meta">
-              <span class="stars">★★★★☆</span>
-              <strong>4.6</strong>
-              <span class="revenue"><em>MRR</em>$9.3k</span>
-              <span>87 votes</span>
-              <span>13 comments</span>
-            </div>
-            <div class="launch-status">
-              <strong>In 2 days</strong>
-              <span>Sat, Jun 6, 2026</span>
-              <span class="signal-label good">Healthy</span>
-            </div>
-          </article>
-          </div>
-
-          <aside class="insight-rail" aria-label="Market insights">
-            <section class="insight-card">
-              <span class="eyebrow">Market Pulse</span>
-              <h2>Sales tools are leading today's signal.</h2>
-              <p>
-                Products with clear revenue and workflow positioning are getting
-                more saves than broad AI utilities.
-              </p>
-            </section>
-
-            <section class="insight-card metric-card">
-              <span class="eyebrow">Quarry Index</span>
-              <div class="metric-line">
-                <span>Indexed products</span>
-                <strong>1,761</strong>
-              </div>
-              <div class="metric-line">
-                <span>Avg. MRR</span>
-                <strong>$9.7k <em class="up">+14%</em></strong>
-              </div>
-              <div class="metric-line">
-                <span>Risk flags</span>
-                <strong>18 <em class="down">+5%</em></strong>
-              </div>
-            </section>
-
-            <section class="insight-card">
-              <span class="eyebrow">Hot Filters</span>
-              <div class="filter-list">
-                <button type="button">Revenue up</button>
-                <button type="button">AI sales</button>
-                <button type="button">Founder updates</button>
-                <button type="button">New this week</button>
-              </div>
-            </section>
-
-            <section class="insight-card note-card">
-              <span class="eyebrow">Quarry Note</span>
-              <p>
-                Watch smaller tools with rising MRR. They often reveal sharper
-                niches before larger launch platforms notice them.
-              </p>
-            </section>
-          </aside>
         </div>
       </section>
     </main>
+    <script>
+      (() => {
+        document.querySelectorAll('.like-button').forEach((button) => {
+          button.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const isLiked = button.classList.toggle('is-liked');
+            button.setAttribute('aria-pressed', String(isLiked));
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
