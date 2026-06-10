@@ -1,4 +1,10 @@
 node_modules
 dist
+.next
+.next-dev
+.next-build
+out
+.env*.local
+env.local
 .DS_Store
 *.log

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Criar conta - Calc</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/auth.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/vendor/supabase.js"></script>
+    <script src="/supabase.js"></script>
+  </head>
+  <body>
+    <main class="auth-page">
+      <section class="auth-card" aria-labelledby="register-title">
+        <a class="auth-brand" href="/" aria-label="Voltar para Calc">
+          <img src="/assets/calc-logo.png" alt="Calc logo" />
+          <span>Calc</span>
+        </a>
+
+        <h1 id="register-title">Criar conta</h1>
+        <p>Crie sua conta para salvar produtos e acompanhar sinais de mercado.</p>
+
+        <form class="auth-form" id="register-form">
+          <div class="auth-field">
+            <label for="name">Nome</label>
+            <input id="name" type="text" placeholder="Seu nome" autocomplete="name" required />
+          </div>
+
+          <div class="auth-field">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="voce@email.com" autocomplete="email" required />
+          </div>
+
+          <div class="auth-field">
+            <label for="password">Senha</label>
+            <input
+              id="password"
+              type="password"
+              placeholder="Crie uma senha"
+              autocomplete="new-password"
+              required
+            />
+          </div>
+
+          <button class="auth-submit" type="submit">Criar conta</button>
+        </form>
+
+        <div class="auth-message" id="auth-message" role="status"></div>
+
+        <p class="auth-footer">
+          Já tenho conta.
+          <a href="/login.html">Entrar</a>
+        </p>
+      </section>
+    </main>
+
+    <script>
+      const form = document.getElementById("register-form");
+      const message = document.getElementById("auth-message");
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        message.textContent = "Criando conta...";
+        message.className = "auth-message";
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        try {
+          const { error } = await window.calcSupabase.auth.signUp({
+            email,
+            password,
+            options: {
+              data: {
+                name,
+              },
+            },
+          });
+
+          if (error) {
+            message.textContent = error.message;
+            message.className = "auth-message error";
+            return;
+          }
+
+          message.textContent = "Verifique seu email para confirmar o cadastro";
+          message.className = "auth-message success";
+        } catch (error) {
+          message.textContent = "Nao foi possivel conectar ao Supabase.";
+          message.className = "auth-message error";
+        }
+      });
+    </script>
+  </body>
+</html>
