@@ -9,12 +9,16 @@ if (!command || !["dev", "build", "start"].includes(command)) {
   process.exit(1);
 }
 
-const distDir = command === "dev" ? ".next-dev" : ".next-build";
 const projectRoot = process.cwd();
-const distPath = path.join(projectRoot, distDir);
+const distDir = command === "dev" ? ".next" : ".next-build";
+const outputDirsToClean = command === "dev"
+  ? [".next"]
+  : command === "build"
+    ? [".next-build"]
+    : [];
 
-if (command === "dev" || command === "build") {
-  fs.rmSync(distPath, { recursive: true, force: true });
+for (const dir of outputDirsToClean) {
+  fs.rmSync(path.join(projectRoot, dir), { recursive: true, force: true });
 }
 
 const child = spawn(
@@ -22,11 +26,14 @@ const child = spawn(
   ["next", command === "start" ? "start" : command],
   {
     stdio: "inherit",
-    env: { ...process.env, NEXT_DIST_DIR: distDir },
+    cwd: projectRoot,
+    env: {
+      ...process.env,
+      NEXT_DIST_DIR: distDir,
+    },
   },
 );
 
 child.on("exit", (code) => {
   process.exit(code ?? 0);
 });
-

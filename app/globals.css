@@ -77,11 +77,11 @@ body.sheet-open {
 }
 
 .brand img {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   display: block;
   border-radius: 8px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .main-links {
@@ -1711,6 +1711,137 @@ body.auth-open .page {
 .auth-overlay.is-open .auth-modal {
   transform: translateY(0) scale(1);
   opacity: 1;
+}
+
+/* ── Tema do popup de login (cores exatas da imagem 2) ── */
+.auth-overlay .auth-modal:not(.auth-setup-modal) {
+  --auth-popup-bg: #222222;
+  --auth-popup-border: #3e3e40;
+  --auth-popup-border-strong: #494949;
+  --auth-popup-text: #ecebec;
+  --auth-popup-muted: #9e9e9f;
+  --auth-popup-dim: #7e7d80;
+  --auth-popup-accent: #9ac666;
+
+  border-color: var(--auth-popup-border);
+  background: var(--auth-popup-bg);
+  color: var(--auth-popup-text);
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-modal-header-icon {
+  border-color: var(--auth-popup-border);
+  background: var(--auth-popup-bg);
+  color: var(--auth-popup-text);
+  box-shadow: none;
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-modal-header-text h2 {
+  color: var(--auth-popup-text);
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-modal-header-text p {
+  color: var(--auth-popup-muted);
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-modal-close {
+  color: var(--auth-popup-muted);
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-modal-close:hover,
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-modal-close:focus-visible {
+  background: var(--auth-popup-border);
+  color: var(--auth-popup-text);
+  box-shadow: none;
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-section-trigger {
+  border-color: var(--auth-popup-border);
+  background: var(--auth-popup-bg);
+  box-shadow: none;
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-section-trigger:hover {
+  border-color: var(--auth-popup-border-strong);
+  background: var(--auth-popup-border);
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-section.is-expanded .auth-section-trigger {
+  border-color: var(--auth-popup-border-strong);
+  background: var(--auth-popup-border);
+  box-shadow: none;
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-section-icon {
+  border-color: var(--auth-popup-border);
+  background: var(--auth-popup-bg);
+  color: var(--auth-popup-text);
+  box-shadow: none;
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-section-title {
+  color: var(--auth-popup-text);
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-section-desc {
+  color: var(--auth-popup-muted);
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-section-chevron {
+  border-color: var(--auth-popup-border);
+  background: var(--auth-popup-bg);
+  color: var(--auth-popup-muted);
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-section.is-expanded .auth-section-chevron {
+  border-color: var(--auth-popup-border-strong);
+  background: var(--auth-popup-border-strong);
+  color: var(--auth-popup-text);
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-fields,
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-fields-required,
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-fields-profile,
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-fields-optional {
+  border-color: var(--auth-popup-border);
+  background: var(--auth-popup-bg);
+  box-shadow: none;
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-field-label {
+  color: var(--auth-popup-muted);
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-field-icon {
+  color: var(--auth-popup-muted);
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-field-input-shell {
+  border-color: var(--auth-popup-border);
+  background: var(--auth-popup-bg);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-field-input-shell.is-active {
+  border-color: var(--auth-popup-border-strong);
+  background: var(--auth-popup-bg);
+  box-shadow: none;
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-field-input-wrap input {
+  color: var(--auth-popup-text);
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-field-input-wrap input::placeholder {
+  color: var(--auth-popup-dim);
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-modal-message {
+  color: var(--auth-popup-muted);
+}
+
+.auth-overlay .auth-modal:not(.auth-setup-modal) .auth-modal-message.success {
+  color: var(--auth-popup-accent);
 }
 
 .auth-modal-header {
@@ -4595,10 +4726,3179 @@ body.auth-open .page {
     transition-duration: 0.01ms !important;
     transition-delay: 0ms !important;
   }
+}
 
-  body.auth-open .page {
-    transform: none;
-    filter: none;
-    opacity: 1;
+/* ── Light account setup popup ── */
+
+.auth-flow-overlay,
+.auth-flow-overlay-register {
+  background: rgba(4, 4, 4, 0.42);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.auth-setup-modal {
+  width: min(688px, calc(100vw - 28px));
+  height: auto;
+  max-height: min(96vh, 826px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  background: #050505;
+  color: #f4f4f1;
+  box-shadow:
+    0 34px 78px rgba(0, 0, 0, 0.54),
+    0 14px 30px rgba(0, 0, 0, 0.34);
+}
+
+.auth-setup-panel {
+  background: #050505;
+}
+
+.auth-overlay.is-open .auth-setup-modal {
+  animation: auth-modal-in 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.auth-overlay.is-open .auth-setup-header,
+.auth-overlay.is-open .auth-setup-section,
+.auth-overlay.is-open .auth-setup-footer,
+.auth-overlay.is-open .auth-modal-message {
+  opacity: 0;
+  animation: auth-stagger-in 560ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.auth-overlay.is-open .auth-setup-header {
+  animation-delay: 80ms;
+}
+
+.auth-overlay.is-open .auth-setup-section:nth-of-type(1) {
+  animation-delay: 140ms;
+}
+
+.auth-overlay.is-open .auth-setup-section:nth-of-type(2) {
+  animation-delay: 200ms;
+}
+
+.auth-overlay.is-open .auth-setup-section:nth-of-type(3) {
+  animation-delay: 260ms;
+}
+
+.auth-overlay.is-open .auth-modal-message {
+  animation-delay: 300ms;
+}
+
+.auth-overlay.is-open .auth-setup-footer {
+  animation-delay: 320ms;
+}
+
+.auth-setup-header {
+  min-height: 92px;
+  grid-template-columns: 56px 1fr 24px;
+  gap: 16px;
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.auth-setup-icon,
+.auth-setup-section-icon {
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(244, 244, 241, 0.72);
+  background: #0f1011;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.auth-setup-icon svg,
+.auth-setup-section-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.auth-setup-header-copy h2 {
+  margin: 0 0 5px;
+  color: #f4f4f1;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.auth-setup-header-copy p {
+  color: rgba(244, 244, 241, 0.56);
+  font-size: 13px;
+  line-height: 1.32;
+}
+
+.auth-setup-close {
+  align-self: start;
+  width: 24px;
+  height: 24px;
+  color: rgba(244, 244, 241, 0.58);
+}
+
+.auth-setup-close:hover,
+.auth-setup-close:focus-visible {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.auth-setup-content {
+  padding: 0;
+  overflow: auto;
+}
+
+.auth-setup-section {
+  grid-template-columns: 56px 1fr;
+  gap: 16px;
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.auth-setup-section:last-of-type {
+  border-bottom: 0;
+}
+
+.auth-setup-section-head {
+  min-height: 44px;
+  grid-template-columns: 1fr auto 30px;
+  gap: 12px;
+  color: #f4f4f1;
+}
+
+.auth-setup-section-head strong {
+  gap: 8px;
+  color: #f4f4f1;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.auth-setup-section-head i {
+  width: 15px;
+  height: 15px;
+  color: #050505;
+  background: rgba(244, 244, 241, 0.72);
+  font-size: 10px;
+}
+
+.auth-setup-section-head small {
+  margin-top: 6px;
+  color: rgba(244, 244, 241, 0.52);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.auth-setup-badge {
+  min-width: 104px;
+  height: 28px;
+  padding: 0 14px;
+  color: rgba(244, 244, 241, 0.66);
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.auth-setup-badge.is-progress {
+  color: #ee9b58;
+  background: rgba(255, 142, 56, 0.18);
+}
+
+.auth-setup-badge.is-complete {
+  color: #7ccf99;
+  background: rgba(43, 142, 82, 0.18);
+}
+
+.auth-setup-chevron {
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(244, 244, 241, 0.56);
+  background: rgba(255, 255, 255, 0.03);
+  transition:
+    background 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease,
+    transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.auth-setup-chevron svg {
+  width: 14px;
+  height: 14px;
+}
+
+.auth-setup-section.is-expanded .auth-setup-chevron {
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #050505;
+  background: #f4f4f1;
+  transform: translateY(-1px);
+}
+
+.auth-setup-fields-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 480ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 260ms ease,
+    margin-top 480ms cubic-bezier(0.22, 1, 0.36, 1);
+  margin-top: 0;
+  pointer-events: none;
+}
+
+.auth-setup-fields-wrap.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-top: 16px;
+  pointer-events: auto;
+}
+
+.auth-setup-fields {
+  min-height: 0;
+  overflow: hidden;
+  padding: 14px 18px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  background: #090909;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+.auth-setup-fields-wrap.is-open .auth-setup-fields {
+  animation: auth-fields-shell-in 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.auth-setup-fields label {
+  min-height: 46px;
+  grid-template-columns: 24px 142px 1fr;
+  gap: 14px;
+  color: rgba(244, 244, 241, 0.76);
+  font-size: 13px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.auth-setup-fields-wrap.is-open .auth-setup-fields label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.auth-setup-fields label:nth-child(1) {
+  transition-delay: 40ms;
+}
+
+.auth-setup-fields label:nth-child(2) {
+  transition-delay: 85ms;
+}
+
+.auth-setup-fields label:nth-child(3) {
+  transition-delay: 130ms;
+}
+
+.auth-setup-fields label:nth-child(4) {
+  transition-delay: 175ms;
+}
+
+.auth-setup-fields label:nth-child(5) {
+  transition-delay: 220ms;
+}
+
+.auth-setup-fields label:nth-child(6) {
+  transition-delay: 265ms;
+}
+
+.auth-setup-fields .auth-field-icon {
+  width: 20px;
+  height: 20px;
+  color: rgba(244, 244, 241, 0.64);
+}
+
+.auth-setup-fields input {
+  height: 34px;
+  padding: 0;
+  font-size: 13px;
+  border-color: transparent;
+  color: rgba(244, 244, 241, 0.42);
+  background: transparent;
+}
+
+.auth-setup-fields input::placeholder {
+  color: rgba(244, 244, 241, 0.32);
+}
+
+.auth-setup-fields input:focus {
+  border-color: transparent;
+  color: rgba(244, 244, 241, 0.72);
+  background: transparent;
+  box-shadow: none;
+}
+
+.auth-setup-content .auth-modal-message {
+  margin: 12px 20px 0;
+  color: #ee9b58;
+  background: rgba(255, 142, 56, 0.18);
+}
+
+.auth-modal-message.success,
+.auth-setup-content .auth-modal-message.success {
+  color: #7ccf99;
+  background: rgba(43, 142, 82, 0.18);
+}
+
+.auth-setup-footer {
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px 20px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #050505;
+}
+
+.auth-setup-button {
+  height: 52px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  color: #f4f4f1;
+  font-size: 14px;
+  font-weight: 600;
+  background: #0b0b0b;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.auth-setup-button:hover,
+.auth-setup-button:focus-visible {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: #131313;
+  transform: translateY(-1px);
+}
+
+.auth-setup-button-primary {
+  border-color: #3d61f2;
+  color: #ffffff;
+  background: #4265f4;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 10px 24px rgba(66, 101, 244, 0.22);
+}
+
+.auth-setup-button-primary:hover,
+.auth-setup-button-primary:focus-visible {
+  background: #385cea;
+}
+
+@keyframes auth-modal-in {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+    filter: blur(8px);
   }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes auth-stagger-in {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes auth-fields-shell-in {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.992);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 760px) {
+  .auth-setup-modal {
+    width: min(100vw - 18px, 688px);
+    max-height: min(94vh, 826px);
+  }
+
+  .auth-setup-header {
+    grid-template-columns: 48px 1fr 24px;
+    gap: 14px;
+    padding: 18px 18px 16px;
+  }
+
+  .auth-setup-content {
+    padding-top: 0;
+  }
+
+  .auth-setup-section {
+    grid-template-columns: 48px 1fr;
+    gap: 12px;
+    padding: 16px 18px;
+  }
+
+  .auth-setup-section-head {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-setup-badge,
+  .auth-setup-chevron {
+    justify-self: start;
+  }
+
+  .auth-setup-content .auth-modal-message {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+
+  .auth-setup-footer {
+    padding: 16px 18px 18px;
+  }
+
+  .auth-setup-fields label {
+    min-height: 42px;
+    grid-template-columns: 20px 1fr;
+    gap: 10px;
+  }
+
+  .auth-setup-fields input {
+    grid-column: 2;
+  }
+}
+
+/* ── Account setup modal tuned to match reference 2 ── */
+
+.auth-flow-overlay,
+.auth-flow-overlay-register {
+  background: rgba(232, 232, 232, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.auth-setup-modal {
+  width: min(706px, calc(100vw - 24px));
+  height: auto;
+  max-height: min(92vh, 560px);
+  border: 1px solid #d8d8d8;
+  border-radius: 24px;
+  background: #f6f6f6;
+  color: #1e1e1e;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.14),
+    0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.auth-setup-panel {
+  background: #f6f6f6;
+}
+
+.auth-overlay.is-open .auth-setup-modal {
+  animation: auth-modal-in 380ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.auth-setup-header {
+  min-height: 94px;
+  grid-template-columns: 48px 1fr 20px;
+  gap: 14px;
+  padding: 22px 20px 16px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.auth-setup-icon,
+.auth-setup-section-icon {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #e3e3e3;
+  color: #727272;
+  background: #f8f8f8;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+.auth-setup-icon svg,
+.auth-setup-section-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.auth-setup-header-copy h2 {
+  margin: 0 0 6px;
+  color: #202020;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+.auth-setup-header-copy p {
+  color: #666666;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.28;
+}
+
+.auth-setup-close {
+  align-self: start;
+  width: 20px;
+  height: 20px;
+  color: #595959;
+}
+
+.auth-setup-close:hover,
+.auth-setup-close:focus-visible {
+  color: #2f2f2f;
+  background: transparent;
+}
+
+.auth-setup-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.auth-setup-content {
+  padding: 0;
+  overflow: auto;
+}
+
+.auth-setup-section {
+  grid-template-columns: 48px 1fr;
+  gap: 12px;
+  padding: 18px 20px;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.auth-setup-section-head {
+  min-height: 42px;
+  grid-template-columns: 1fr auto 32px;
+  gap: 12px;
+  color: #202020;
+}
+
+.auth-setup-section-head strong {
+  gap: 8px;
+  color: #202020;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.18;
+}
+
+.auth-setup-info {
+  width: 16px;
+  height: 16px;
+  display: inline-grid;
+  place-items: center;
+  color: #b8b8b8;
+}
+
+.auth-setup-info svg {
+  width: 16px;
+  height: 16px;
+}
+
+.auth-setup-section-head i {
+  display: none;
+}
+
+.auth-setup-section-head small {
+  margin-top: 5px;
+  color: #737373;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.auth-setup-badge {
+  min-width: 104px;
+  height: 32px;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  color: #767676;
+  background: #ededed;
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.auth-setup-badge.is-progress {
+  color: #ff8a2b;
+  background: #fff2e8;
+}
+
+.auth-setup-badge.is-complete {
+  color: #4f9a67;
+  background: #eaf6ee;
+}
+
+.auth-setup-chevron {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e6e6e6;
+  color: #a6a6a6;
+  background: #f8f8f8;
+}
+
+.auth-setup-chevron svg {
+  width: 14px;
+  height: 14px;
+}
+
+.auth-setup-section.is-expanded .auth-setup-chevron {
+  border-color: #dedede;
+  color: #707070;
+  background: #f1f1f1;
+  transform: none;
+}
+
+.auth-setup-fields-wrap.is-open {
+  margin-top: 12px;
+}
+
+.auth-setup-fields {
+  padding: 12px 14px 10px;
+  border: 1px solid #e8e8e8;
+  border-radius: 15px;
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.auth-setup-fields label {
+  min-height: 40px;
+  grid-template-columns: 20px 132px 1fr;
+  gap: 12px;
+  color: #5a5a5a;
+  font-size: 12px;
+}
+
+.auth-setup-fields .auth-field-icon {
+  width: 18px;
+  height: 18px;
+  color: #8b8b8b;
+}
+
+.auth-setup-fields input {
+  height: 32px;
+  font-size: 12px;
+  color: #7b7b7b;
+}
+
+.auth-setup-fields input::placeholder {
+  color: #b4b4b4;
+}
+
+.auth-setup-fields input:focus {
+  color: #4a4a4a;
+}
+
+.auth-setup-content .auth-modal-message {
+  margin: 12px 20px 0;
+}
+
+.auth-setup-footer {
+  gap: 16px;
+  padding: 18px 20px 20px;
+  border-top: 1px solid #dddddd;
+  background: #f6f6f6;
+}
+
+.auth-setup-button {
+  height: 52px;
+  border: 1px solid #dcdcdc;
+  border-radius: 14px;
+  color: #5f5f5f;
+  font-size: 15px;
+  font-weight: 500;
+  background: #f4f4f4;
+  box-shadow: none;
+}
+
+.auth-setup-button:hover,
+.auth-setup-button:focus-visible {
+  border-color: #d0d0d0;
+  background: #efefef;
+  transform: none;
+}
+
+.auth-setup-button-primary {
+  border-color: #4265f4;
+  color: #ffffff;
+  background: #4366f6;
+  box-shadow: none;
+}
+
+.auth-setup-button-primary:hover,
+.auth-setup-button-primary:focus-visible {
+  background: #3b5ff2;
+}
+
+@media (max-width: 760px) {
+  .auth-setup-modal {
+    width: min(100vw - 16px, 706px);
+    max-height: min(94vh, 560px);
+    border-radius: 22px;
+  }
+
+  .auth-setup-header {
+    padding: 18px 16px 14px;
+  }
+
+  .auth-setup-section {
+    gap: 10px;
+    padding: 16px;
+  }
+
+  .auth-setup-section-head {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-setup-badge,
+  .auth-setup-chevron {
+    justify-self: start;
+  }
+
+  .auth-setup-content .auth-modal-message {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .auth-setup-footer {
+    padding: 16px;
+  }
+
+  .auth-setup-fields label {
+    min-height: 38px;
+    grid-template-columns: 18px 1fr;
+    gap: 10px;
+  }
+
+  .auth-setup-fields input {
+    grid-column: 2;
+  }
+}
+
+/* ── Final compact pass to match reference 2 more closely ── */
+
+.auth-flow-modal.auth-setup-modal {
+  width: min(520px, calc(100vw - 28px)) !important;
+  max-height: min(90vh, 360px) !important;
+  border-radius: 20px !important;
+  transition:
+    max-height 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 220ms ease,
+    transform 220ms ease;
+}
+
+.auth-flow-modal.auth-setup-modal.has-expanded-section {
+  max-height: min(92vh, 640px) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-header {
+  min-height: 68px;
+  grid-template-columns: 34px 1fr 16px;
+  gap: 12px;
+  padding: 14px 18px 12px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-icon,
+.auth-flow-modal.auth-setup-modal .auth-setup-section-icon {
+  width: 29px;
+  height: 29px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-icon svg,
+.auth-flow-modal.auth-setup-modal .auth-setup-section-icon svg {
+  width: 13px;
+  height: 13px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-header-copy h2 {
+  margin: 0 0 3px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-header-copy p {
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-close {
+  width: 16px;
+  height: 16px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-close svg {
+  width: 14px;
+  height: 14px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section {
+  grid-template-columns: 32px 1fr;
+  gap: 10px;
+  padding: 7px 16px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head {
+  min-height: 34px;
+  grid-template-columns: 1fr auto 22px;
+  gap: 7px;
+  align-items: center;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head > span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head strong {
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head small {
+  margin-top: 2px;
+  font-size: 9px;
+  line-height: 1.12;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-info,
+.auth-flow-modal.auth-setup-modal .auth-setup-info svg {
+  width: 11px;
+  height: 11px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge {
+  min-width: 76px;
+  height: 22px;
+  padding: 0 9px;
+  font-size: 9px;
+  font-weight: 500;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-chevron {
+  width: 22px;
+  height: 22px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-chevron svg {
+  width: 9px;
+  height: 9px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open {
+  margin-top: 8px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields {
+  padding: 8px 10px 7px;
+  border-radius: 12px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label {
+  min-height: 30px;
+  grid-template-columns: 16px 96px 1fr;
+  gap: 8px;
+  font-size: 10px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields .auth-field-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields input {
+  height: 22px;
+  font-size: 10px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-footer {
+  gap: 12px;
+  padding: 12px 18px 14px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-button {
+  height: 38px;
+  border-radius: 11px;
+  font-size: 12px;
+}
+
+@media (max-width: 760px) {
+  .auth-flow-modal.auth-setup-modal {
+    width: min(100vw - 18px, 520px) !important;
+    max-height: min(94vh, 360px) !important;
+  }
+
+  .auth-flow-modal.auth-setup-modal.has-expanded-section {
+    max-height: min(94vh, 640px) !important;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-header {
+    padding: 14px 14px 10px;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-section {
+    gap: 9px;
+    padding: 7px 12px;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-section-head {
+    grid-template-columns: 1fr auto 22px;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-footer {
+    padding: 10px 14px 14px;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-fields label {
+    grid-template-columns: 16px 1fr;
+  }
+}
+
+/* ── Option rows alignment pass ── */
+
+.auth-flow-modal.auth-setup-modal .auth-setup-content {
+  display: grid;
+  gap: 2px;
+  padding-top: 6px;
+  transition:
+    padding 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    gap 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.auth-flow-modal.auth-setup-modal.has-expanded-section .auth-setup-content {
+  gap: 10px;
+  padding-top: 10px;
+  padding-bottom: 8px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section {
+  grid-template-columns: 32px minmax(0, 1fr);
+  justify-content: unset;
+  align-items: center;
+  gap: 11px;
+  min-height: 56px;
+  padding: 6px 16px;
+  border-bottom: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section:last-of-type {
+  border-bottom: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded {
+  grid-template-columns: 34px minmax(0, 1fr);
+  justify-content: unset;
+  align-items: start;
+  min-height: auto;
+  padding-bottom: 4px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-main {
+  display: block;
+  min-width: 0;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-section-main {
+  display: block;
+  width: 100%;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-icon {
+  align-self: center;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head {
+  width: 100%;
+  min-height: 34px;
+  grid-template-columns: minmax(0, 1fr) 76px 22px;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-section-head {
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr) 76px 22px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head > span {
+  min-width: 0;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head strong {
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.06;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head small {
+  margin-top: 3px;
+  font-size: 9px;
+  line-height: 1.18;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-info,
+.auth-flow-modal.auth-setup-modal .auth-setup-info svg {
+  width: 12px;
+  height: 12px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge {
+  justify-self: end;
+  min-width: 76px;
+  height: 22px;
+  padding: 0 9px;
+  font-size: 9px;
+  font-weight: 500;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-chevron {
+  justify-self: end;
+  width: 22px;
+  height: 22px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-chevron svg {
+  width: 9px;
+  height: 9px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields-wrap,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields {
+  width: 100%;
+  max-width: 100%;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields-wrap {
+  display: block;
+  grid-template-rows: auto;
+  opacity: 1;
+  margin-top: 12px;
+  overflow: visible;
+  pointer-events: auto;
+  transition:
+    margin-top 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 220ms ease;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields {
+  min-height: auto;
+  overflow: visible;
+  padding: 12px 14px 10px;
+  border-radius: 16px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label {
+  min-height: 38px;
+  grid-template-columns: 18px 132px 1fr;
+  gap: 10px;
+  font-size: 11px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields .auth-field-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields input {
+  height: 28px;
+  font-size: 11px;
+}
+
+@media (max-width: 760px) {
+  .auth-flow-modal.auth-setup-modal .auth-setup-content {
+    gap: 1px;
+    padding-top: 4px;
+  }
+
+  .auth-flow-modal.auth-setup-modal.has-expanded-section .auth-setup-content {
+    gap: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-section {
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 10px;
+    min-height: 64px;
+    padding: 6px 12px;
+    justify-content: unset;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded {
+    grid-template-columns: 32px minmax(0, 1fr);
+    min-height: auto;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-section-head {
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr) 88px 22px;
+    column-gap: 8px;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-section-head {
+    grid-template-columns: minmax(0, 1fr) 88px 22px;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-section-head strong {
+    font-size: 14px;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-section-head small {
+    font-size: 11px;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-badge {
+    min-width: 84px;
+    height: 26px;
+    font-size: 10px;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-chevron {
+    width: 22px;
+    height: 22px;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields {
+    padding: 10px 12px 8px;
+    border-radius: 14px;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label {
+    min-height: 34px;
+    grid-template-columns: 16px 96px 1fr;
+    gap: 8px;
+    font-size: 10px;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields input {
+    height: 24px;
+    font-size: 10px;
+  }
+}
+
+/* Keep the section icon anchored to the title row when details are expanded. */
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded > .auth-setup-section-icon {
+  align-self: start;
+  margin-top: 0;
+}
+
+@media (max-width: 760px) {
+  .auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded > .auth-setup-section-icon {
+    align-self: start;
+    margin-top: 0;
+  }
+}
+
+/* Field hover selection matching the setup reference. */
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields input {
+  border: 1px solid transparent;
+  border-radius: 11px;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label:hover input,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label:focus-within input,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields input:hover,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields input:focus {
+  color: #4f4f4f;
+  background: #f7f7f7;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label:hover input::placeholder,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label:focus-within input::placeholder,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields input:hover::placeholder,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields input:focus::placeholder {
+  color: #777777;
+}
+
+/* Active typing state with inline clear/confirm controls. */
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label {
+  position: relative;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label:focus-within input {
+  color: #3f3f3f;
+  background: #ffffff;
+  border-color: #1f1f1f;
+  box-shadow:
+    0 0 0 3px #ffffff,
+    0 0 0 4px #d8d8d8;
+  padding-right: 58px;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label:focus-within::before,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label:focus-within::after {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  color: #5f5f5f;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label:focus-within::before {
+  right: 42px;
+  content: "\00d7";
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label:focus-within::after {
+  right: 17px;
+  content: "\2713";
+}
+
+/* Smooth accordion motion for opening and closing setup sections. */
+.auth-flow-modal.auth-setup-modal .auth-setup-content {
+  transition:
+    gap 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    padding 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section {
+  transition:
+    min-height 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    padding 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 280ms ease,
+    opacity 280ms ease;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head,
+.auth-flow-modal.auth-setup-modal .auth-setup-section-icon,
+.auth-flow-modal.auth-setup-modal .auth-setup-badge,
+.auth-flow-modal.auth-setup-modal .auth-setup-chevron {
+  transition:
+    background 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease,
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 220ms ease;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition:
+    grid-template-rows 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    margin-top 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 260ms ease,
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields-wrap.is-open {
+  grid-template-rows: 1fr;
+  margin-top: 12px;
+  opacity: 1;
+  overflow: hidden;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields {
+  min-height: 0;
+  overflow: hidden;
+  transform: translateY(-4px) scale(0.985);
+  transform-origin: top center;
+  transition:
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 260ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields-wrap.is-open .auth-setup-fields {
+  transform: translateY(0) scale(1);
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label {
+  transition:
+    opacity 360ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 180ms ease;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap:not(.is-open) .auth-setup-fields label {
+  opacity: 0;
+  transform: translateY(7px);
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields label:nth-child(1) {
+  transition-delay: 35ms;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields label:nth-child(2) {
+  transition-delay: 70ms;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields label:nth-child(3) {
+  transition-delay: 105ms;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields label:nth-child(4) {
+  transition-delay: 140ms;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields label:nth-child(5) {
+  transition-delay: 175ms;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields label:nth-child(6) {
+  transition-delay: 210ms;
+}
+
+/* ── Reference sizing pass: match the light setup modal proportions ── */
+
+.auth-flow-modal.auth-setup-modal {
+  width: min(520px, calc(100vw - 16px)) !important;
+  height: auto !important;
+  max-height: min(92vh, 420px) !important;
+  border: 1px solid #d8d8d8 !important;
+  border-radius: 22px !important;
+  background: #f8f8f8 !important;
+  color: #202020 !important;
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.16),
+    0 5px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.auth-flow-modal.auth-setup-modal.has-expanded-section {
+  max-height: min(92vh, 720px) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-panel {
+  background: #f8f8f8 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-header {
+  min-height: 74px !important;
+  grid-template-columns: 34px 1fr 16px !important;
+  gap: 12px !important;
+  padding: 16px 18px 14px !important;
+  border-bottom: 1px solid #dddddd !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-icon,
+.auth-flow-modal.auth-setup-modal .auth-setup-section-icon {
+  width: 30px !important;
+  height: 30px !important;
+  border: 1px solid #e3e3e3 !important;
+  color: #6f6f6f !important;
+  background: #fbfbfb !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-icon svg,
+.auth-flow-modal.auth-setup-modal .auth-setup-section-icon svg {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-header-copy h2 {
+  margin: 0 0 3px !important;
+  color: #202020 !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.1 !important;
+  letter-spacing: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-header-copy p {
+  color: #666666 !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  line-height: 1.15 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-close {
+  align-self: start !important;
+  width: 16px !important;
+  height: 16px !important;
+  color: #5b5b5b !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-close svg {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-content {
+  gap: 0 !important;
+  padding: 12px 18px 10px !important;
+}
+
+.auth-flow-modal.auth-setup-modal.has-expanded-section .auth-setup-content {
+  gap: 0 !important;
+  padding: 12px 18px 10px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section {
+  grid-template-columns: 32px minmax(0, 1fr) !important;
+  justify-content: unset !important;
+  align-items: center !important;
+  gap: 10px !important;
+  min-height: 60px !important;
+  padding: 0 0 8px !important;
+  border-bottom: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded {
+  grid-template-columns: 32px minmax(0, 1fr) !important;
+  align-items: start !important;
+  min-height: auto !important;
+  padding-bottom: 12px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section:last-of-type {
+  padding-bottom: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded > .auth-setup-section-icon {
+  align-self: start !important;
+  margin-top: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-main,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-section-main {
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-section-head {
+  width: 100% !important;
+  min-height: 36px !important;
+  grid-template-columns: minmax(0, 1fr) 72px 22px !important;
+  align-items: center !important;
+  column-gap: 8px !important;
+  color: #202020 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head strong {
+  gap: 5px !important;
+  color: #202020 !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  line-height: 1.12 !important;
+  letter-spacing: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head small {
+  margin-top: 2px !important;
+  color: #737373 !important;
+  font-size: 10px !important;
+  font-weight: 400 !important;
+  line-height: 1.12 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-info,
+.auth-flow-modal.auth-setup-modal .auth-setup-info svg {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge {
+  min-width: 80px !important;
+  height: 22px !important;
+  padding: 0 10px !important;
+  border-radius: 999px !important;
+  font-size: 10px !important;
+  font-weight: 500 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-chevron {
+  width: 22px !important;
+  height: 22px !important;
+  color: #9c9c9c !important;
+  background: #fbfbfb !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-chevron {
+  color: #f5f5f5 !important;
+  background: #252525 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-chevron svg {
+  width: 9px !important;
+  height: 9px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields-wrap {
+  margin-top: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields-wrap.is-open {
+  margin-top: 12px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields {
+  width: 100% !important;
+  padding: 12px 12px 10px !important;
+  border: 1px solid #e8e8e8 !important;
+  border-radius: 14px !important;
+  background: #ffffff !important;
+  box-shadow: none !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label {
+  min-height: 36px !important;
+  grid-template-columns: 16px 96px 1fr !important;
+  gap: 8px !important;
+  color: #5f5f5f !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields .auth-field-icon,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields .auth-field-icon {
+  width: 14px !important;
+  height: 14px !important;
+  color: #6f6f6f !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields .auth-field-icon svg,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields .auth-field-icon svg {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields input,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields input {
+  height: 28px !important;
+  border-radius: 10px !important;
+  padding: 0 12px !important;
+  color: #202020 !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  line-height: 1.1 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields input::placeholder,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields input::placeholder {
+  color: #a8a8a8 !important;
+  opacity: 1 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label:focus-within input {
+  border-color: #1f1f1f !important;
+  border-radius: 14px !important;
+  background: #ffffff !important;
+  box-shadow:
+    0 0 0 3px #ffffff,
+    0 0 0 4px #d8d8d8 !important;
+  padding-right: 58px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label:focus-within::before {
+  right: 43px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label:focus-within::after {
+  right: 18px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-footer {
+  gap: 10px !important;
+  padding: 10px 16px 12px !important;
+  border-top: 1px solid #dddddd !important;
+  background: #f8f8f8 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-button {
+  height: 36px !important;
+  border-radius: 11px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+/* Final final: closed checklist rows match the compact reference. */
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-content {
+  display: grid !important;
+  grid-auto-rows: auto !important;
+  align-content: start !important;
+  gap: 0 !important;
+  padding: 20px 20px 18px !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section {
+  min-height: 79px !important;
+  display: grid !important;
+  grid-template-columns: 44px minmax(0, 1fr) !important;
+  align-items: center !important;
+  column-gap: 14px !important;
+  width: 100% !important;
+  justify-self: stretch !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-main,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section:not(.is-expanded) .auth-setup-section-main {
+  display: flex !important;
+  align-items: center !important;
+  min-height: 44px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  padding-left: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-icon,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section:not(.is-expanded) > .auth-setup-section-icon {
+  align-self: center !important;
+  transform: none !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head {
+  min-height: 44px !important;
+  display: grid !important;
+  grid-template-columns: minmax(230px, 1fr) max-content !important;
+  align-items: center !important;
+  column-gap: 12px !important;
+  width: 100% !important;
+  justify-self: stretch !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head > span:first-child {
+  justify-content: center !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head strong {
+  font-size: 12px !important;
+  line-height: 1.1 !important;
+  white-space: nowrap !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head small {
+  margin-top: 4px !important;
+  font-size: 10px !important;
+  line-height: 1.12 !important;
+  white-space: nowrap !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-meta {
+  gap: 8px !important;
+  justify-self: end !important;
+  margin-left: auto !important;
+  min-width: max-content !important;
+}
+
+/* Closed checklist horizontal alignment: text left, status controls right. */
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section {
+  width: 100% !important;
+  justify-self: stretch !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-main {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head {
+  width: 100% !important;
+  justify-self: stretch !important;
+  grid-template-columns: minmax(230px, 1fr) max-content !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head strong,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head small {
+  white-space: nowrap !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-meta {
+  justify-self: end !important;
+  margin-left: auto !important;
+  min-width: max-content !important;
+}
+
+/* EOF status placement: push badges to the right edge like the reference. */
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-content {
+  padding-right: 12px !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head {
+  grid-template-columns: minmax(0, 1fr) 110px 32px !important;
+  column-gap: 8px !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-meta {
+  transform: translateX(0px) !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-badge {
+  width: 104px !important;
+  min-width: 104px !important;
+  height: 22px !important;
+  padding: 0 10px !important;
+  justify-content: center !important;
+  white-space: nowrap !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-chevron {
+  flex: 0 0 32px !important;
+  width: 32px !important;
+  height: 32px !important;
+}
+
+/* Final setup row contract: text stays left, progress status stays at the far right. */
+.auth-flow-modal.auth-setup-modal .auth-setup-section-main {
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-row-bar {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 150px !important;
+  align-items: center !important;
+  column-gap: 12px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 44px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-section-head {
+  position: static !important;
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 44px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  text-align: left !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head > span:first-child,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head > span:first-child {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head strong,
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head small,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head strong,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head small {
+  max-width: 100% !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-meta,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-meta {
+  position: static !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  justify-self: end !important;
+  gap: 8px !important;
+  width: 150px !important;
+  min-width: 150px !important;
+  height: 32px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  transform: none !important;
+  cursor: pointer !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 0 0 104px !important;
+  width: 104px !important;
+  min-width: 104px !important;
+  height: 22px !important;
+  padding: 0 10px !important;
+  border-radius: 999px !important;
+  font-size: 10px !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  backdrop-filter: blur(14px) saturate(1.25) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(1.25) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    0 8px 18px rgba(0, 0, 0, 0.2) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge.is-incomplete {
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  background: linear-gradient(180deg, rgba(92, 92, 92, 0.9), rgba(60, 60, 60, 0.86)) !important;
+  color: #e7e7e7 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge.is-progress {
+  border: 1px solid rgba(255, 168, 92, 0.42) !important;
+  background: linear-gradient(180deg, rgba(92, 62, 43, 0.9), rgba(62, 43, 31, 0.86)) !important;
+  color: #ff9d4d !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge.is-complete {
+  border: 1px solid rgba(126, 224, 137, 0.42) !important;
+  background: linear-gradient(180deg, rgba(48, 86, 55, 0.9), rgba(34, 59, 39, 0.86)) !important;
+  color: #8de996 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-chevron,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-chevron {
+  display: grid !important;
+  place-items: center !important;
+  flex: 0 0 32px !important;
+  width: 32px !important;
+  height: 32px !important;
+  border: 1px solid rgba(255, 255, 255, 0.68) !important;
+  border-radius: 999px !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(232, 232, 232, 0.92)) !important;
+  color: #111111 !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 8px 18px rgba(0, 0, 0, 0.22) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-chevron {
+  border-color: rgba(255, 255, 255, 0.92) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: #ffffff !important;
+}
+
+/* Absolute end override: liquid status pills and chevron states. */
+.auth-flow-modal.auth-setup-modal .auth-setup-section {
+  position: relative !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-main {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head {
+  position: relative !important;
+  display: block !important;
+  min-height: 44px !important;
+  width: 100% !important;
+  padding-right: 158px !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head > span:first-child {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head strong,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head small {
+  max-width: 100% !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-meta {
+  position: absolute !important;
+  top: 50% !important;
+  right: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 8px !important;
+  width: 150px !important;
+  min-width: 150px !important;
+  margin: 0 !important;
+  transform: translateY(-50%) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 104px !important;
+  min-width: 104px !important;
+  height: 22px !important;
+  padding: 0 10px !important;
+  border-radius: 999px !important;
+  white-space: nowrap !important;
+  backdrop-filter: blur(14px) saturate(1.25) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(1.25) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.32),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+    0 8px 18px rgba(0, 0, 0, 0.18) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge.is-incomplete {
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.08)),
+    rgba(82, 82, 82, 0.72) !important;
+  color: #eeeeee !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge.is-progress {
+  border: 1px solid rgba(255, 152, 74, 0.32) !important;
+  background:
+    linear-gradient(180deg, rgba(255, 186, 117, 0.32), rgba(255, 126, 40, 0.14)),
+    rgba(88, 65, 45, 0.62) !important;
+  color: #ff9a4a !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge.is-complete {
+  border: 1px solid rgba(98, 220, 118, 0.34) !important;
+  background:
+    linear-gradient(180deg, rgba(137, 238, 148, 0.3), rgba(81, 207, 102, 0.12)),
+    rgba(44, 82, 50, 0.62) !important;
+  color: #83e28a !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-chevron {
+  color: #151515 !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(244, 244, 244, 0.84)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.75) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 6px 14px rgba(0, 0, 0, 0.16) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-chevron {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.86) !important;
+  box-shadow: none !important;
+}
+
+/* Final lock: status pills never overlap section copy. */
+.auth-flow-modal.auth-setup-modal .auth-setup-section {
+  position: relative !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-main {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head {
+  position: relative !important;
+  display: block !important;
+  min-height: 44px !important;
+  width: 100% !important;
+  padding-right: 166px !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head > span:first-child {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  min-width: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head strong,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head small {
+  max-width: 100% !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: clip !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-meta {
+  position: absolute !important;
+  top: 50% !important;
+  right: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 8px !important;
+  width: 150px !important;
+  min-width: 150px !important;
+  margin: 0 !important;
+  transform: translateY(-50%) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 104px !important;
+  min-width: 104px !important;
+  height: 22px !important;
+  padding: 0 10px !important;
+  border-radius: 999px !important;
+  white-space: nowrap !important;
+  backdrop-filter: blur(14px) saturate(1.25) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(1.25) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.32),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+    0 8px 18px rgba(0, 0, 0, 0.18) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge.is-incomplete {
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.08)),
+    rgba(82, 82, 82, 0.72) !important;
+  color: #eeeeee !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge.is-progress {
+  border: 1px solid rgba(255, 152, 74, 0.32) !important;
+  background:
+    linear-gradient(180deg, rgba(255, 186, 117, 0.32), rgba(255, 126, 40, 0.14)),
+    rgba(88, 65, 45, 0.62) !important;
+  color: #ff9a4a !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge.is-complete {
+  border: 1px solid rgba(98, 220, 118, 0.34) !important;
+  background:
+    linear-gradient(180deg, rgba(137, 238, 148, 0.3), rgba(81, 207, 102, 0.12)),
+    rgba(44, 82, 50, 0.62) !important;
+  color: #83e28a !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-chevron {
+  color: #151515 !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(244, 244, 244, 0.84)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.75) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 6px 14px rgba(0, 0, 0, 0.16) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-chevron {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.86) !important;
+  box-shadow: none !important;
+}
+
+/* EOF status colors and row alignment refinements. */
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section {
+  grid-template-columns: 44px minmax(0, 1fr) !important;
+  column-gap: 14px !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-main {
+  display: block !important;
+  width: 100% !important;
+  justify-self: stretch !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) max-content !important;
+  width: 100% !important;
+  justify-self: stretch !important;
+  column-gap: 18px !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head > span:first-child {
+  min-width: 0 !important;
+  max-width: none !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-meta {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  justify-self: end !important;
+  gap: 8px !important;
+  width: max-content !important;
+  min-width: max-content !important;
+  margin-left: auto !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge.is-incomplete {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #c6c6c6 !important;
+  box-shadow: none !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge.is-progress {
+  border-color: rgba(255, 126, 40, 0.26) !important;
+  background: rgba(255, 126, 40, 0.14) !important;
+  color: #ff8a3d !important;
+  box-shadow: 0 0 18px rgba(255, 126, 40, 0.08) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge.is-complete {
+  border-color: rgba(81, 207, 102, 0.26) !important;
+  background: rgba(81, 207, 102, 0.14) !important;
+  color: #74d87a !important;
+  box-shadow: 0 0 18px rgba(81, 207, 102, 0.08) !important;
+}
+
+/* Closed checklist rows: match the compact vertical rhythm of the reference. */
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-content {
+  display: grid !important;
+  grid-auto-rows: auto !important;
+  align-content: start !important;
+  gap: 0 !important;
+  padding: 20px 20px 18px !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section {
+  min-height: 79px !important;
+  display: grid !important;
+  grid-template-columns: 44px minmax(0, 1fr) !important;
+  align-items: center !important;
+  column-gap: 14px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section + .auth-setup-section {
+  margin-top: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-main,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section:not(.is-expanded) .auth-setup-section-main {
+  display: flex !important;
+  align-items: center !important;
+  min-height: 44px !important;
+  padding-left: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-icon,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section:not(.is-expanded) > .auth-setup-section-icon {
+  align-self: center !important;
+  transform: none !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head {
+  min-height: 44px !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  column-gap: 12px !important;
+  width: 100% !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head > span:first-child {
+  justify-content: center !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head strong {
+  font-size: 12px !important;
+  line-height: 1.1 !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head small {
+  margin-top: 4px !important;
+  font-size: 10px !important;
+  line-height: 1.12 !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-meta {
+  gap: 8px !important;
+}
+
+/* Absolute final account setup field state. Keep this last to avoid visual regressions. */
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields {
+  display: grid !important;
+  align-content: center !important;
+  row-gap: 7px !important;
+  padding: 18px 14px 14px !important;
+  border: 1px solid #444446 !important;
+  border-radius: 15px !important;
+  background: #2a2a2a !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 10px 22px rgba(0, 0, 0, 0.16) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields label {
+  min-height: 34px !important;
+  grid-template-columns: 16px 96px minmax(0, 1fr) !important;
+  column-gap: 8px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-field-icon {
+  color: #b8b8b8 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields label > span:not(.auth-field-icon) {
+  color: #ededed !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields :is(input, select.auth-setup-select) {
+  height: 30px !important;
+  border: 1px solid #5d5d5f !important;
+  border-radius: 10px !important;
+  background: #494949 !important;
+  color: #f3f3f3 !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields select.auth-setup-select {
+  padding-right: 30px !important;
+  background:
+    linear-gradient(45deg, transparent 50%, #d4d4d4 50%) calc(100% - 15px) 13px / 5px 5px no-repeat,
+    linear-gradient(135deg, #d4d4d4 50%, transparent 50%) calc(100% - 10px) 13px / 5px 5px no-repeat,
+    #494949 !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields :is(input, select.auth-setup-select)::placeholder,
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields select.auth-setup-select.is-placeholder {
+  color: #c4c4c4 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields label:hover :is(input, select.auth-setup-select):not(:focus) {
+  border-color: #707072 !important;
+  background: #545454 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields label:focus-within input {
+  border-color: #2f2f2f !important;
+  background: #f4f4f4 !important;
+  color: #202020 !important;
+  box-shadow: none !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields label:focus-within select.auth-setup-select {
+  border-color: #707072 !important;
+  background:
+    linear-gradient(45deg, transparent 50%, #f0f0f0 50%) calc(100% - 15px) 13px / 5px 5px no-repeat,
+    linear-gradient(135deg, #f0f0f0 50%, transparent 50%) calc(100% - 10px) 13px / 5px 5px no-repeat,
+    #545454 !important;
+  color: #ffffff !important;
+}
+
+/* Last override: opened section fields must use the final dark palette and balanced spacing. */
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields-wrap.is-open .auth-setup-fields {
+  display: grid !important;
+  align-content: center !important;
+  row-gap: 7px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 18px 14px 14px !important;
+  border: 1px solid #444446 !important;
+  border-radius: 15px !important;
+  background: #2a2a2a !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 10px 22px rgba(0, 0, 0, 0.16) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields label,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields-wrap.is-open .auth-setup-fields label {
+  min-height: 34px !important;
+  display: grid !important;
+  grid-template-columns: 16px 96px minmax(0, 1fr) !important;
+  align-items: center !important;
+  column-gap: 8px !important;
+  padding: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-field-icon,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields-wrap.is-open .auth-field-icon {
+  color: #b8b8b8 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields label > span:not(.auth-field-icon),
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields-wrap.is-open .auth-setup-fields label > span:not(.auth-field-icon) {
+  color: #ededed !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields :is(input, select.auth-setup-select),
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields-wrap.is-open .auth-setup-fields :is(input, select.auth-setup-select) {
+  width: 100% !important;
+  height: 30px !important;
+  padding: 0 12px !important;
+  border: 1px solid #5d5d5f !important;
+  border-radius: 10px !important;
+  outline: none !important;
+  background: #494949 !important;
+  color: #f3f3f3 !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  line-height: 30px !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields select.auth-setup-select,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields-wrap.is-open .auth-setup-fields select.auth-setup-select {
+  padding-right: 30px !important;
+  background:
+    linear-gradient(45deg, transparent 50%, #d4d4d4 50%) calc(100% - 15px) 13px / 5px 5px no-repeat,
+    linear-gradient(135deg, #d4d4d4 50%, transparent 50%) calc(100% - 10px) 13px / 5px 5px no-repeat,
+    #494949 !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields :is(input, select.auth-setup-select)::placeholder,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields-wrap.is-open .auth-setup-fields :is(input, select.auth-setup-select)::placeholder,
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields select.auth-setup-select.is-placeholder {
+  color: #c4c4c4 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields label:hover :is(input, select.auth-setup-select):not(:focus),
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields-wrap.is-open .auth-setup-fields label:hover :is(input, select.auth-setup-select):not(:focus) {
+  border-color: #707072 !important;
+  background: #545454 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields label:focus-within input,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields-wrap.is-open .auth-setup-fields label:focus-within input {
+  border-color: #2f2f2f !important;
+  background: #f4f4f4 !important;
+  color: #202020 !important;
+  box-shadow: none !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields label:focus-within select.auth-setup-select,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields-wrap.is-open .auth-setup-fields label:focus-within select.auth-setup-select {
+  border-color: #707072 !important;
+  background:
+    linear-gradient(45deg, transparent 50%, #f0f0f0 50%) calc(100% - 15px) 13px / 5px 5px no-repeat,
+    linear-gradient(135deg, #f0f0f0 50%, transparent 50%) calc(100% - 10px) 13px / 5px 5px no-repeat,
+    #545454 !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields label:has(select.auth-setup-select):focus-within::before,
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open .auth-setup-fields label:has(select.auth-setup-select):focus-within::after {
+  content: none !important;
+}
+
+/* Field panel balance and dark input colors. */
+.auth-flow-modal.auth-setup-modal .auth-setup-fields,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields {
+  display: grid !important;
+  align-content: center !important;
+  row-gap: 8px !important;
+  padding: 22px 18px !important;
+  border: 1px solid #dedede !important;
+  background: #f8f8f8 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label {
+  min-height: 42px !important;
+  color: #5d5d5d !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields .auth-field-icon,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields .auth-field-icon {
+  color: #686868 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label > span:not(.auth-field-icon),
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label > span:not(.auth-field-icon) {
+  color: #5d5d5d !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields input,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields input {
+  border: 1px solid #434343 !important;
+  background: #222222 !important;
+  color: #ededed !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields input::placeholder,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields input::placeholder {
+  color: #9d9d9d !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label:hover input:not(:focus),
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label:hover input:not(:focus) {
+  border-color: #565656 !important;
+  background: #262626 !important;
+  color: #f3f3f3 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label:focus-within input,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label:focus-within input {
+  border-color: #2f2f2f !important;
+  background: #f6f6f6 !important;
+  color: #202020 !important;
+  box-shadow: none !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label:focus-within input::placeholder,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label:focus-within input::placeholder {
+  color: #a2a2a2 !important;
+}
+
+/* Final backdrop and language select behavior. */
+.auth-flow-overlay,
+.auth-flow-overlay-register {
+  background:
+    radial-gradient(circle at 50% 44%, rgba(70, 70, 70, 0.28), transparent 34%),
+    rgba(22, 22, 22, 0.72) !important;
+  backdrop-filter: blur(22px) saturate(0.82) brightness(0.72) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(0.82) brightness(0.72) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields select.auth-setup-select,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields select.auth-setup-select {
+  width: 100% !important;
+  height: 28px !important;
+  padding: 0 30px 0 12px !important;
+  border: 1px solid #434343 !important;
+  border-radius: 10px !important;
+  outline: none !important;
+  background:
+    linear-gradient(45deg, transparent 50%, #9d9d9d 50%) calc(100% - 15px) 12px / 5px 5px no-repeat,
+    linear-gradient(135deg, #9d9d9d 50%, transparent 50%) calc(100% - 10px) 12px / 5px 5px no-repeat,
+    #222222 !important;
+  color: #ededed !important;
+  font: inherit !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  line-height: 1.1 !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields select.auth-setup-select.is-placeholder {
+  color: #9d9d9d !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label:hover select.auth-setup-select:not(:focus),
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label:hover select.auth-setup-select:not(:focus) {
+  border-color: #565656 !important;
+  background:
+    linear-gradient(45deg, transparent 50%, #b5b5b5 50%) calc(100% - 15px) 12px / 5px 5px no-repeat,
+    linear-gradient(135deg, #b5b5b5 50%, transparent 50%) calc(100% - 10px) 12px / 5px 5px no-repeat,
+    #262626 !important;
+  color: #f3f3f3 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label:focus-within select.auth-setup-select,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label:focus-within select.auth-setup-select {
+  border-color: #2f2f2f !important;
+  background:
+    linear-gradient(45deg, transparent 50%, #202020 50%) calc(100% - 15px) 12px / 5px 5px no-repeat,
+    linear-gradient(135deg, #202020 50%, transparent 50%) calc(100% - 10px) 12px / 5px 5px no-repeat,
+    #f6f6f6 !important;
+  color: #202020 !important;
+  box-shadow: none !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label:has(select.auth-setup-select):focus-within::before,
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label:has(select.auth-setup-select):focus-within::after {
+  content: none !important;
+}
+
+/* Mantem o layout do cabecalho das secoes estavel quando a opcao esta fechada. */
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-section-head {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: center !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head > span:first-child {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  min-width: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-meta {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 8px !important;
+  width: auto !important;
+  min-width: max-content !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge {
+  justify-self: auto !important;
+  white-space: nowrap !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-chevron {
+  flex: 0 0 22px !important;
+}
+
+/* Centraliza SVGs dentro dos ícones circulares (remove o “baseline gap” do SVG inline). */
+.auth-setup-icon,
+.auth-setup-section-icon,
+.auth-flow-modal.auth-setup-modal .auth-setup-icon,
+.auth-flow-modal.auth-setup-modal .auth-setup-section-icon {
+  line-height: 0 !important;
+}
+
+.auth-setup-icon svg,
+.auth-setup-section-icon svg,
+.auth-flow-modal.auth-setup-modal .auth-setup-icon svg,
+.auth-flow-modal.auth-setup-modal .auth-setup-section-icon svg {
+  display: block !important;
+}
+
+/* Sobe os ícones das seções no estado "fechado" para alinhar com o título (como na referência). */
+.auth-setup-section:not(.is-expanded) > .auth-setup-section-icon,
+.auth-flow-modal.auth-setup-modal .auth-setup-section:not(.is-expanded) > .auth-setup-section-icon {
+  align-self: start !important;
+  transform: translateY(-6px) !important;
+}
+
+/* Reserva largura real para o círculo do ícone e afasta o bloco de texto. */
+.auth-flow-modal.auth-setup-modal .auth-setup-section,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded {
+  grid-template-columns: 44px minmax(0, 1fr) !important;
+  column-gap: 16px !important;
+}
+
+/* ── Cores (imagem 2) somente no popup "Account Setup" ── */
+.auth-flow-modal.auth-setup-modal {
+  --setup-bg: #222222;
+  --setup-border: #3e3e40;
+  --setup-border-strong: #494949;
+  --setup-text: #ecebec;
+  --setup-muted: #9e9e9f;
+  --setup-dim: #7e7d80;
+  --setup-accent: #9ac666;
+
+  background: var(--setup-bg) !important;
+  border-color: var(--setup-border) !important;
+  color: var(--setup-text) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-panel {
+  background: var(--setup-bg) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-header {
+  border-bottom: 1px solid var(--setup-border) !important;
+  background: var(--setup-bg) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-header-copy h2 {
+  color: var(--setup-text) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-header-copy p {
+  color: var(--setup-muted) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-close {
+  color: var(--setup-muted) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-close:hover,
+.auth-flow-modal.auth-setup-modal .auth-setup-close:focus-visible {
+  background: var(--setup-border) !important;
+  color: var(--setup-text) !important;
+  box-shadow: none !important;
+}
+
+/* Ajuste final: no estado fechado, o texto deve começar mais à direita, como na referência. */
+.auth-flow-modal.auth-setup-modal .auth-setup-section:not(.is-expanded) .auth-setup-section-main {
+  padding-left: 18px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-icon,
+.auth-flow-modal.auth-setup-modal .auth-setup-section-icon {
+  width: 44px !important;
+  height: 44px !important;
+  display: grid !important;
+  place-items: center !important;
+  border-radius: 50% !important;
+  background: var(--setup-bg) !important;
+  border-color: var(--setup-border) !important;
+  color: var(--setup-muted) !important;
+  box-shadow: none !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-icon svg,
+.auth-flow-modal.auth-setup-modal .auth-setup-section-icon svg {
+  width: 19px !important;
+  height: 19px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section {
+  border-bottom: 0 !important;
+  grid-template-columns: 44px minmax(0, 1fr) !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section:last-of-type {
+  border-bottom: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded {
+  grid-template-columns: 44px minmax(0, 1fr) !important;
+  align-items: start !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head {
+  background: transparent !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head strong {
+  color: var(--setup-text) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head small {
+  color: var(--setup-muted) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-info,
+.auth-flow-modal.auth-setup-modal .auth-setup-info svg {
+  color: var(--setup-dim) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge,
+.auth-flow-modal.auth-setup-modal .auth-setup-badge.is-progress,
+.auth-flow-modal.auth-setup-modal .auth-setup-badge.is-complete {
+  background: var(--setup-border-strong) !important;
+  border: 1px solid var(--setup-border) !important;
+  color: var(--setup-text) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields {
+  background: var(--setup-bg) !important;
+  border: 1px solid var(--setup-border) !important;
+  box-shadow: none !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label > span:not(.auth-field-icon) {
+  color: var(--setup-muted) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields input {
+  background: var(--setup-bg) !important;
+  border: 1px solid var(--setup-border) !important;
+  color: var(--setup-text) !important;
+  box-shadow: none !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields input::placeholder {
+  color: var(--setup-dim) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label:hover input:not(:focus) {
+  background: #262626 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label:focus-within input,
+.auth-flow-modal.auth-setup-modal .auth-setup-fields input:focus {
+  border-color: var(--setup-border-strong) !important;
+  background: #262626 !important;
+  box-shadow: none !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-footer {
+  border-top: 1px solid var(--setup-border) !important;
+  background: var(--setup-bg) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-button {
+  border: 1px solid var(--setup-border) !important;
+  color: var(--setup-text) !important;
+  background: var(--setup-border-strong) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-button:hover:not(:disabled) {
+  background: #4f4f4f !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-button:disabled {
+  opacity: 0.7 !important;
+}
+
+@media (max-width: 760px) {
+  .auth-flow-modal.auth-setup-modal {
+    width: min(520px, calc(100vw - 16px)) !important;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-header {
+    padding: 14px 16px 12px !important;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-content {
+    padding: 10px 16px 10px !important;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-section {
+    grid-template-columns: 30px minmax(0, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-section-head,
+  .auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-section-head {
+    grid-template-columns: minmax(0, 1fr) 72px 22px !important;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-fields label,
+  .auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label {
+    grid-template-columns: 20px 1fr !important;
+  }
+
+  .auth-flow-modal.auth-setup-modal .auth-setup-fields input,
+  .auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields input {
+    grid-column: 2 !important;
+  }
+}
+
+/* Final proportional pass for the account setup reference. */
+.auth-flow-modal.auth-setup-modal {
+  width: min(520px, calc(100vw - 16px)) !important;
+  max-width: 520px !important;
+  overflow: hidden !important;
+  border-radius: 22px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-header {
+  min-height: 74px !important;
+  padding: 16px 18px 14px !important;
+  grid-template-columns: 34px minmax(0, 1fr) 16px !important;
+  gap: 12px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-header-copy h2 {
+  margin-bottom: 3px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.05 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-header-copy p {
+  font-size: 11px !important;
+  line-height: 1.15 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-content,
+.auth-flow-modal.auth-setup-modal.has-expanded-section .auth-setup-content {
+  padding: 12px 18px 10px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section {
+  grid-template-columns: 32px minmax(0, 1fr) !important;
+  gap: 10px !important;
+  min-height: 60px !important;
+  padding-bottom: 8px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded {
+  min-height: auto !important;
+  padding-bottom: 12px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-main {
+  min-width: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-section-head {
+  min-height: 36px !important;
+  grid-template-columns: minmax(0, 1fr) 80px 22px !important;
+  column-gap: 8px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head strong {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  line-height: 1.08 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head small {
+  margin-top: 2px !important;
+  font-size: 10px !important;
+  line-height: 1.15 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge {
+  width: auto !important;
+  min-width: 80px !important;
+  height: 22px !important;
+  padding: 0 10px !important;
+  font-size: 10px !important;
+  font-weight: 500 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-chevron {
+  width: 22px !important;
+  height: 22px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields-wrap.is-open,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields-wrap.is-open {
+  margin-top: 12px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 18px 14px 14px !important;
+  border: 1px solid #444446 !important;
+  border-radius: 15px !important;
+  background: #2a2a2a !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 10px 22px rgba(0, 0, 0, 0.16) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields label {
+  min-height: 34px !important;
+  display: grid !important;
+  grid-template-columns: 16px 96px minmax(0, 1fr) !important;
+  align-items: center !important;
+  column-gap: 8px !important;
+  padding: 0 !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label > span:not(.auth-field-icon) {
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  color: #ededed !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields input,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields input {
+  width: 100% !important;
+  height: 30px !important;
+  padding: 0 12px !important;
+  border: 1px solid #5d5d5f !important;
+  border-radius: 10px !important;
+  background: #494949 !important;
+  color: #f3f3f3 !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  line-height: 30px !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label:hover input:not(:focus) {
+  border-color: #707072 !important;
+  background: #545454 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields select.auth-setup-select,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-fields select.auth-setup-select {
+  width: 100% !important;
+  height: 30px !important;
+  padding: 0 30px 0 12px !important;
+  border: 1px solid #5d5d5f !important;
+  border-radius: 10px !important;
+  outline: none !important;
+  background:
+    linear-gradient(45deg, transparent 50%, #d4d4d4 50%) calc(100% - 15px) 13px / 5px 5px no-repeat,
+    linear-gradient(135deg, #d4d4d4 50%, transparent 50%) calc(100% - 10px) 13px / 5px 5px no-repeat,
+    #494949 !important;
+  color: #f3f3f3 !important;
+  font: inherit !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  line-height: 30px !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields select.auth-setup-select.is-placeholder {
+  color: #c4c4c4 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label:hover select.auth-setup-select:not(:focus) {
+  border-color: #707072 !important;
+  background:
+    linear-gradient(45deg, transparent 50%, #f0f0f0 50%) calc(100% - 15px) 13px / 5px 5px no-repeat,
+    linear-gradient(135deg, #f0f0f0 50%, transparent 50%) calc(100% - 10px) 13px / 5px 5px no-repeat,
+    #545454 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label:has(select.auth-setup-select):focus-within::before,
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label:has(select.auth-setup-select):focus-within::after {
+  content: none !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label:focus-within input {
+  border-color: #1f1f1f !important;
+  border-radius: 12px !important;
+  background: #ffffff !important;
+  box-shadow:
+    0 0 0 3px #ffffff,
+    0 0 0 4px #d8d8d8 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label:focus-within::before,
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label:focus-within::after {
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label:focus-within::before {
+  right: 44px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-fields label:focus-within::after {
+  right: 18px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-footer {
+  min-height: 64px !important;
+  padding: 10px 16px 12px !important;
+  gap: 10px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-button {
+  height: 36px !important;
+  border-radius: 11px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+/* Final setup row contract v2: status badges stay at the far right, never over text. */
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-content {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-auto-rows: auto !important;
+  align-content: start !important;
+  justify-items: stretch !important;
+  gap: 0 !important;
+  padding: 20px 20px 18px !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section {
+  display: grid !important;
+  grid-template-columns: 44px minmax(0, 1fr) !important;
+  align-items: center !important;
+  column-gap: 14px !important;
+  width: 100% !important;
+  min-height: 79px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-main,
+.auth-flow-modal.auth-setup-modal .auth-setup-section-main {
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 44px !important;
+  padding: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-icon,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section:not(.is-expanded) > .auth-setup-section-icon {
+  align-self: center !important;
+  transform: none !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-row-bar,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-row-bar {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 150px !important;
+  align-items: center !important;
+  column-gap: 12px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 44px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head,
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-section-head {
+  position: static !important;
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 44px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  text-align: left !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head > span:first-child,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head > span:first-child {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head strong,
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head small,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head strong,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head small {
+  max-width: 100% !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head strong {
+  font-size: 12px !important;
+  line-height: 1.1 !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-head small {
+  margin-top: 4px !important;
+  font-size: 10px !important;
+  line-height: 1.12 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-meta,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section-meta {
+  position: static !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  justify-self: end !important;
+  gap: 8px !important;
+  width: 150px !important;
+  min-width: 150px !important;
+  height: 32px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  transform: none !important;
+  cursor: pointer !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 0 0 104px !important;
+  width: 104px !important;
+  min-width: 104px !important;
+  height: 22px !important;
+  padding: 0 10px !important;
+  border-radius: 999px !important;
+  font-size: 10px !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  backdrop-filter: blur(14px) saturate(1.25) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(1.25) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    0 8px 18px rgba(0, 0, 0, 0.2) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge.is-incomplete {
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  background: linear-gradient(180deg, rgba(92, 92, 92, 0.9), rgba(60, 60, 60, 0.86)) !important;
+  color: #e7e7e7 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge.is-progress {
+  border: 1px solid rgba(255, 168, 92, 0.42) !important;
+  background: linear-gradient(180deg, rgba(92, 62, 43, 0.9), rgba(62, 43, 31, 0.86)) !important;
+  color: #ff9d4d !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge.is-complete {
+  border: 1px solid rgba(126, 224, 137, 0.42) !important;
+  background: linear-gradient(180deg, rgba(48, 86, 55, 0.9), rgba(34, 59, 39, 0.86)) !important;
+  color: #8de996 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-chevron,
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-chevron {
+  display: grid !important;
+  place-items: center !important;
+  flex: 0 0 32px !important;
+  width: 32px !important;
+  height: 32px !important;
+  border: 1px solid rgba(255, 255, 255, 0.68) !important;
+  border-radius: 999px !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(232, 232, 232, 0.92)) !important;
+  color: #111111 !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 8px 18px rgba(0, 0, 0, 0.22) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-chevron {
+  border-color: rgba(255, 255, 255, 0.92) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: #ffffff !important;
 }

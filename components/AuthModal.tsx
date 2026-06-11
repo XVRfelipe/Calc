@@ -14,6 +14,166 @@ type AuthModalProps = {
   startupName?: string;
 };
 
+const setupModalRuntimeStyles = `
+.auth-flow-modal.auth-setup-modal .auth-setup-section-main {
+  display: block !important;
+  position: static !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-row-bar {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 150px !important;
+  align-items: center !important;
+  column-gap: 12px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 44px !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 44px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  text-align: left !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head > span:first-child {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head strong,
+.auth-flow-modal.auth-setup-modal .auth-setup-section-head small {
+  max-width: 100% !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section-meta {
+  position: static !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  justify-self: end !important;
+  gap: 8px !important;
+  width: 150px !important;
+  min-width: 150px !important;
+  height: 32px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  transform: none !important;
+  cursor: pointer !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 0 0 104px !important;
+  width: 104px !important;
+  min-width: 104px !important;
+  height: 22px !important;
+  padding: 0 10px !important;
+  border-radius: 999px !important;
+  font-size: 10px !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  backdrop-filter: blur(14px) saturate(1.25) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(1.25) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    0 8px 18px rgba(0, 0, 0, 0.2) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge.is-incomplete {
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  background: linear-gradient(180deg, rgba(92, 92, 92, 0.9), rgba(60, 60, 60, 0.86)) !important;
+  color: #e7e7e7 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge.is-progress {
+  border: 1px solid rgba(255, 168, 92, 0.42) !important;
+  background: linear-gradient(180deg, rgba(92, 62, 43, 0.9), rgba(62, 43, 31, 0.86)) !important;
+  color: #ff9d4d !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-badge.is-complete {
+  border: 1px solid rgba(126, 224, 137, 0.42) !important;
+  background: linear-gradient(180deg, rgba(48, 86, 55, 0.9), rgba(34, 59, 39, 0.86)) !important;
+  color: #8de996 !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-chevron {
+  display: grid !important;
+  place-items: center !important;
+  flex: 0 0 32px !important;
+  width: 32px !important;
+  height: 32px !important;
+  border: 1px solid rgba(255, 255, 255, 0.68) !important;
+  border-radius: 999px !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(232, 232, 232, 0.92)) !important;
+  color: #111111 !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 8px 18px rgba(0, 0, 0, 0.22) !important;
+}
+
+.auth-flow-modal.auth-setup-modal .auth-setup-section.is-expanded .auth-setup-chevron {
+  border-color: rgba(255, 255, 255, 0.92) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: #ffffff !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section:not(.is-expanded) .auth-setup-section-main {
+  display: block !important;
+  position: static !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 44px !important;
+  padding: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section:not(.is-expanded) .auth-setup-row-bar {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 150px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section:not(.is-expanded) .auth-setup-section-head {
+  display: flex !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+}
+
+.auth-flow-modal.auth-setup-modal:not(.has-expanded-section) .auth-setup-section:not(.is-expanded) .auth-setup-section-meta {
+  position: static !important;
+  justify-self: end !important;
+  width: 150px !important;
+  min-width: 150px !important;
+  transform: none !important;
+}
+`;
+
 function UserGearIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
@@ -70,9 +230,12 @@ function UsersIcon() {
 
 function GearIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-      <circle cx="12" cy="12" r="3" />
-      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" strokeLinecap="round" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.55" aria-hidden="true">
+      <path
+        d="M9.15 3.8h5.7l.55 2.1c.54.2 1.03.48 1.48.82l2.04-.77 2.85 4.93-1.52 1.56c.03.27.05.52.05.79 0 .27-.02.52-.05.79l1.52 1.56-2.85 4.93-2.04-.77c-.45.34-.94.62-1.48.82l-.55 2.1h-5.7l-.55-2.1a6.94 6.94 0 0 1-1.48-.82l-2.04.77-2.85-4.93 1.52-1.56A6.75 6.75 0 0 1 3.6 13c0-.27.02-.52.05-.79l-1.52-1.56 2.85-4.93 2.04.77c.45-.34.94-.62 1.48-.82l.55-2.1Z"
+        strokeLinejoin="round"
+      />
+      <circle cx="12" cy="13" r="2.8" />
     </svg>
   );
 }
@@ -497,7 +660,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess, startupName }: A
   useEffect(() => {
     if (isOpen) {
       setVisible(true);
-      setExpanded("required");
+      setExpanded(null);
       setMessage("");
       setMessageType("");
       setRegisterPassword(createGeneratedPassword());
@@ -591,6 +754,22 @@ export default function AuthModal({ isOpen, onClose, onSuccess, startupName }: A
   const completedCount = [requiredComplete, profileComplete, optionalComplete].filter(Boolean).length;
   const onboardingProgress = Math.round((completedCount / 3) * 100);
 
+  const getSectionBadge = (complete: boolean, inProgress: boolean) => {
+    if (complete) {
+      return { label: "Complete", tone: "complete" };
+    }
+
+    if (inProgress) {
+      return { label: "In Progress", tone: "progress" };
+    }
+
+    return { label: "Incomplete", tone: "default" };
+  };
+
+  const requiredBadge = getSectionBadge(requiredComplete, requiredInProgress);
+  const profileBadge = getSectionBadge(profileComplete, profileInProgress);
+  const optionalBadge = getSectionBadge(optionalComplete, optionalInProgress);
+
   const handleProceed = () => {
     if (!expanded) {
       setExpanded("required");
@@ -626,9 +805,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess, startupName }: A
 
   if (!visible && !isOpen) return null;
 
-  const subtitle = startupName
-    ? `Complete simple steps to continue with ${startupName}.`
-    : "Complete simple steps to get started.";
+  const subtitle = "Complete simple steps to get started.";
 
   return (
     <div
@@ -637,12 +814,13 @@ export default function AuthModal({ isOpen, onClose, onSuccess, startupName }: A
       onClick={onClose}
     >
       <section
-        className="auth-modal auth-flow-modal auth-flow-register auth-setup-modal"
+        className={`auth-modal auth-flow-modal auth-flow-register auth-setup-modal${expanded ? " has-expanded-section" : ""}`}
         role="dialog"
         aria-modal="true"
         aria-labelledby="auth-modal-title"
         onClick={(e) => e.stopPropagation()}
       >
+        <style>{setupModalRuntimeStyles}</style>
         <div className="auth-setup-panel">
           <header className="auth-setup-header">
             <span className="auth-setup-icon">
@@ -650,7 +828,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess, startupName }: A
             </span>
             <div className="auth-setup-header-copy">
               <h2 id="auth-modal-title">Account Setup</h2>
-              <p>Complete simple steps to get started.</p>
+              <p>{subtitle}</p>
             </div>
             <button className="auth-setup-close" type="button" aria-label="Fechar" onClick={onClose}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -665,18 +843,22 @@ export default function AuthModal({ isOpen, onClose, onSuccess, startupName }: A
                 <IdCardIcon />
               </span>
               <div className="auth-setup-section-main">
-                <button className="auth-setup-section-head" type="button" onClick={() => setExpanded((current) => (current === "required" ? null : "required"))}>
-                  <span>
-                    <strong>Required Information <i>i</i></strong>
-                    <small>Provide required information.</small>
-                  </span>
-                  <em className="auth-setup-badge is-progress">In Progress</em>
-                  <b className="auth-setup-chevron" aria-hidden="true">
-                    <ChevronIcon up={expanded === "required"} />
-                  </b>
-                </button>
+                <div className="auth-setup-row-bar">
+                  <button className="auth-setup-section-head" type="button" onClick={() => setExpanded((current) => (current === "required" ? null : "required"))}>
+                    <span>
+                      <strong>Required Information <span className="auth-setup-info"><InfoIcon /></span></strong>
+                      <small>Provide required information.</small>
+                    </span>
+                  </button>
+                  <button className="auth-setup-section-meta" type="button" onClick={() => setExpanded((current) => (current === "required" ? null : "required"))} aria-label="Toggle required information">
+                    <em className={`auth-setup-badge${requiredBadge.tone === "progress" ? " is-progress" : requiredBadge.tone === "complete" ? " is-complete" : " is-incomplete"}`}>{requiredBadge.label}</em>
+                    <span className="auth-setup-chevron" aria-hidden="true">
+                      <ChevronIcon up={expanded === "required"} />
+                    </span>
+                  </button>
+                </div>
 
-                {expanded === "required" && (
+                <div className={`auth-setup-fields-wrap${expanded === "required" ? " is-open" : ""}`} aria-hidden={expanded !== "required"}>
                   <div className="auth-setup-fields">
                     <label>
                       <FieldIcon type="user" />
@@ -709,7 +891,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess, startupName }: A
                       <input value={registerAddress} placeholder="Enter address..." autoComplete="street-address" onChange={(event) => setRegisterAddress(event.target.value)} />
                     </label>
                   </div>
-                )}
+                </div>
               </div>
             </section>
 
@@ -718,18 +900,22 @@ export default function AuthModal({ isOpen, onClose, onSuccess, startupName }: A
                 <GearIcon />
               </span>
               <div className="auth-setup-section-main">
-                <button className="auth-setup-section-head" type="button" onClick={() => setExpanded((current) => (current === "profile" ? null : "profile"))}>
-                  <span>
-                    <strong>Profile Customization <i>i</i></strong>
-                    <small>Provide information for profile customization.</small>
-                  </span>
-                  <em className="auth-setup-badge">Incomplete</em>
-                  <b className="auth-setup-chevron" aria-hidden="true">
-                    <ChevronIcon up={expanded === "profile"} />
-                  </b>
-                </button>
+                <div className="auth-setup-row-bar">
+                  <button className="auth-setup-section-head" type="button" onClick={() => setExpanded((current) => (current === "profile" ? null : "profile"))}>
+                    <span>
+                      <strong>Profile Customization <span className="auth-setup-info"><InfoIcon /></span></strong>
+                      <small>Provide information for profile customization.</small>
+                    </span>
+                  </button>
+                  <button className="auth-setup-section-meta" type="button" onClick={() => setExpanded((current) => (current === "profile" ? null : "profile"))} aria-label="Toggle profile customization">
+                    <em className={`auth-setup-badge${profileBadge.tone === "progress" ? " is-progress" : profileBadge.tone === "complete" ? " is-complete" : " is-incomplete"}`}>{profileBadge.label}</em>
+                    <span className="auth-setup-chevron" aria-hidden="true">
+                      <ChevronIcon up={expanded === "profile"} />
+                    </span>
+                  </button>
+                </div>
 
-                {expanded === "profile" && (
+                <div className={`auth-setup-fields-wrap${expanded === "profile" ? " is-open" : ""}`} aria-hidden={expanded !== "profile"}>
                   <div className="auth-setup-fields">
                     <label>
                       <FieldIcon type="user" />
@@ -739,10 +925,24 @@ export default function AuthModal({ isOpen, onClose, onSuccess, startupName }: A
                     <label>
                       <FieldIcon type="gear" />
                       <span>Language</span>
-                      <input value={registerLanguage} placeholder="English, Portuguese, Spanish..." onChange={(event) => setRegisterLanguage(event.target.value)} />
+                      <select
+                        className={`auth-setup-select${registerLanguage ? "" : " is-placeholder"}`}
+                        value={registerLanguage}
+                        onChange={(event) => setRegisterLanguage(event.target.value)}
+                      >
+                        <option value="" disabled>
+                          Select language
+                        </option>
+                        <option value="English">English</option>
+                        <option value="Portuguese">Portuguese</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="French">French</option>
+                        <option value="German">German</option>
+                        <option value="Italian">Italian</option>
+                      </select>
                     </label>
                   </div>
-                )}
+                </div>
               </div>
             </section>
 
@@ -751,18 +951,22 @@ export default function AuthModal({ isOpen, onClose, onSuccess, startupName }: A
                 <FeatherIcon />
               </span>
               <div className="auth-setup-section-main">
-                <button className="auth-setup-section-head" type="button" onClick={() => setExpanded((current) => (current === "optional" ? null : "optional"))}>
-                  <span>
-                    <strong>Optional Information <i>i</i></strong>
-                    <small>Provide optional information.</small>
-                  </span>
-                  <em className="auth-setup-badge">Incomplete</em>
-                  <b className="auth-setup-chevron" aria-hidden="true">
-                    <ChevronIcon up={expanded === "optional"} />
-                  </b>
-                </button>
+                <div className="auth-setup-row-bar">
+                  <button className="auth-setup-section-head" type="button" onClick={() => setExpanded((current) => (current === "optional" ? null : "optional"))}>
+                    <span>
+                      <strong>Optional Information <span className="auth-setup-info"><InfoIcon /></span></strong>
+                      <small>Provide optional information.</small>
+                    </span>
+                  </button>
+                  <button className="auth-setup-section-meta" type="button" onClick={() => setExpanded((current) => (current === "optional" ? null : "optional"))} aria-label="Toggle optional information">
+                    <em className={`auth-setup-badge${optionalBadge.tone === "progress" ? " is-progress" : optionalBadge.tone === "complete" ? " is-complete" : " is-incomplete"}`}>{optionalBadge.label}</em>
+                    <span className="auth-setup-chevron" aria-hidden="true">
+                      <ChevronIcon up={expanded === "optional"} />
+                    </span>
+                  </button>
+                </div>
 
-                {expanded === "optional" && (
+                <div className={`auth-setup-fields-wrap${expanded === "optional" ? " is-open" : ""}`} aria-hidden={expanded !== "optional"}>
                   <div className="auth-setup-fields">
                     <label>
                       <FieldIcon type="feather" />
@@ -780,7 +984,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess, startupName }: A
                       <input value={registerWebsite} placeholder="Enter website URL..." autoComplete="url" onChange={(event) => setRegisterWebsite(event.target.value)} />
                     </label>
                   </div>
-                )}
+                </div>
               </div>
             </section>
 
