@@ -2,8 +2,8 @@
 
 import type { KeyboardEvent, MouseEvent } from "react";
 import { useCallback, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import type { User } from "@supabase/supabase-js";
-import AuthModal from "@/components/AuthModal";
 import { supabase } from "@/lib/supabase";
 
 type Startup = {
@@ -234,8 +234,8 @@ const startupDescriptions: Record<string, string> = {
 };
 
 export default function Home() {
+  const router = useRouter();
   const [user, setUser] = useState<User | null>(null);
-  const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [selectedStartup, setSelectedStartup] = useState<Startup | null>(null);
 
@@ -271,19 +271,14 @@ export default function Home() {
       setSelectedStartup(startup);
 
       if (!user) {
-        setIsAuthOpen(true);
+        router.push(`/login?startup=${encodeURIComponent(startup.name)}`);
         return;
       }
 
       setIsSheetOpen(true);
     },
-    [user],
+    [router, user],
   );
-
-  const handleAuthSuccess = () => {
-    setIsAuthOpen(false);
-    setIsSheetOpen(true);
-  };
 
   return (
     <>
@@ -311,7 +306,7 @@ export default function Home() {
               type="button"
               aria-label={user ? "Perfil" : "Entrar"}
               onClick={() => {
-                if (!user) setIsAuthOpen(true);
+                if (!user) router.push("/login");
               }}
             ></button>
           </div>
@@ -448,13 +443,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-
-      <AuthModal
-        isOpen={isAuthOpen}
-        startupName={selectedStartup?.name}
-        onClose={() => setIsAuthOpen(false)}
-        onSuccess={handleAuthSuccess}
-      />
 
       {selectedStartup && (
         <div
