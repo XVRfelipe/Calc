@@ -1,7 +1,7 @@
 "use client";
 
 import type { KeyboardEvent, MouseEvent } from "react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { User } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabase";
@@ -237,7 +237,27 @@ export default function Home() {
   const router = useRouter();
   const [user, setUser] = useState<User | null>(null);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [selectedStartup, setSelectedStartup] = useState<Startup | null>(null);
+  const [activeNav, setActiveNav] = useState("Discover");
+  const navRef = useRef<HTMLElement | null>(null);
+  const pillRef = useRef<HTMLDivElement | null>(null);
+  const accountMenuRef = useRef<HTMLDivElement | null>(null);
+  const accountEmail = user?.email ?? "account@calc.app";
+  const accountName =
+    (user?.user_metadata?.full_name as string | undefined) ||
+    (user?.user_metadata?.name as string | undefined) ||
+    accountEmail.split("@")[0] ||
+    "Calc user";
+  const accountAvatar =
+    (user?.user_metadata?.avatar_url as string | undefined) ||
+    (user?.user_metadata?.picture as string | undefined);
+  const accountInitials = accountName
+    .split(/[\s._-]+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part.charAt(0).toUpperCase())
+    .join("");
 
   useEffect(() => {
     let mounted = true;
@@ -250,6 +270,9 @@ export default function Home() {
 
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
+      if (!session?.user) {
+        setIsAccountOpen(false);
+      }
     });
 
     return () => {
@@ -257,6 +280,32 @@ export default function Home() {
       listener.subscription.unsubscribe();
     };
   }, []);
+
+  useEffect(() => {
+    if (!isAccountOpen) {
+      return;
+    }
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!accountMenuRef.current?.contains(event.target as Node)) {
+        setIsAccountOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: globalThis.KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsAccountOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isAccountOpen]);
 
   useEffect(() => {
     document.body.classList.toggle("sheet-open", isSheetOpen);
@@ -280,6 +329,38 @@ export default function Home() {
     [router, user],
   );
 
+  const goToAccountStep = useCallback(
+    (href: string) => {
+      setIsAccountOpen(false);
+      router.push(href);
+    },
+    [router],
+  );
+
+  const handleSignOut = useCallback(async () => {
+    setIsAccountOpen(false);
+    await supabase.auth.signOut();
+    setUser(null);
+  }, []);
+
+  const handleNavClick = useCallback((label: string) => {
+    if (label === activeNav) return;
+    setActiveNav(label);
+  }, [activeNav]);
+
+  // Slide the pill to the active nav item
+  useEffect(() => {
+    const nav = navRef.current;
+    const pill = pillRef.current;
+    if (!nav || !pill) return;
+    const activeEl = nav.querySelector<HTMLElement>("[data-nav-active='true']");
+    if (!activeEl) return;
+    const navRect = nav.getBoundingClientRect();
+    const itemRect = activeEl.getBoundingClientRect();
+    pill.style.width = `${itemRect.width}px`;
+    pill.style.transform = `translateX(${itemRect.left - navRect.left}px)`;
+  }, [activeNav]);
+
   return (
     <>
       <main className="page">
@@ -288,27 +369,101 @@ export default function Home() {
             <img src="/assets/calc-logo.png" alt="Calc logo" />
           </a>
 
-          <nav className="main-links" aria-label="Main navigation">
-            <a className="active" href="#">
-              Discover
-            </a>
-            <a href="#">Categories</a>
-            <a href="#">Founders</a>
-            <a href="#">Submit</a>
+          <nav className="main-links" aria-label="Main navigation" ref={navRef}>
+            <div className="main-links-pill" ref={pillRef} aria-hidden="true" />
+            {(["Discover", "Categories", "Founders", "Submit"] as const).map((label) => (
+              <a
+                key={label}
+                href="#"
+                data-nav-active={activeNav === label ? "true" : undefined}
+                className={activeNav === label ? "active" : ""}
+                aria-current={activeNav === label ? "page" : undefined}
+                onClick={(e) => { e.preventDefault(); handleNavClick(label); }}
+              >
+                {label}
+              </a>
+            ))}
           </nav>
 
           <div className="nav-actions">
-            <button className="submit-startup" type="button">
+            <button
+              className="submit-startup"
+              type="button"
+              onClick={() => {
+                router.push(user ? "/onboarding" : "/login");
+              }}
+            >
               + Submit startup
             </button>
-            <button
-              className={`avatar-circle${user ? " is-logged-in" : ""}`}
-              type="button"
-              aria-label={user ? "Perfil" : "Entrar"}
-              onClick={() => {
-                if (!user) router.push("/login");
-              }}
-            ></button>
+            {user && (
+            <div className="account-menu-wrap" ref={accountMenuRef}>
+              <button
+                className="avatar-circle is-logged-in"
+                type="button"
+                aria-label="Abrir menu da conta"
+                aria-haspopup="menu"
+                aria-expanded={isAccountOpen}
+                onClick={() => setIsAccountOpen((current) => !current)}
+              >
+                {accountAvatar ? (
+                  <img src={accountAvatar} alt="" />
+                ) : (
+                  <span>{accountInitials || "C"}</span>
+                )}
+              </button>
+
+              {user && (
+                <div className={`account-menu${isAccountOpen ? " is-open" : ""}`} role="menu">
+                  <div className="account-menu-card">
+                    <div className="account-menu-profile">
+                      <div className="account-menu-copy">
+                        <strong>{accountName}</strong>
+                        <span>{accountEmail}</span>
+                      </div>
+                      <button
+                        className="account-menu-avatar"
+                        type="button"
+                        aria-label="Abrir perfil"
+                        onClick={() => goToAccountStep("/profile-setup")}
+                      >
+                        {accountAvatar ? <img src={accountAvatar} alt="" /> : <span>{accountInitials || "C"}</span>}
+                      </button>
+                    </div>
+
+                    <button className="account-menu-item is-active" type="button" role="menuitem" onClick={() => goToAccountStep("/profile")}>
+                      <span className="account-menu-icon account-menu-icon-verified" aria-hidden="true"></span>
+                      Profile
+                    </button>
+                    <button className="account-menu-item" type="button" role="menuitem" onClick={() => goToAccountStep("/onboarding")}>
+                      <span className="account-menu-icon account-menu-icon-community" aria-hidden="true"></span>
+                      Community
+                      <em>+</em>
+                    </button>
+                    <button className="account-menu-item" type="button" role="menuitem">
+                      <span className="account-menu-icon account-menu-icon-card" aria-hidden="true"></span>
+                      Subscription
+                      <b>PRO</b>
+                    </button>
+                    <button className="account-menu-item" type="button" role="menuitem" onClick={() => goToAccountStep("/profile-setup")}>
+                      <span className="account-menu-icon account-menu-icon-toggle" aria-hidden="true"></span>
+                      Settings
+                    </button>
+
+                    <div className="account-menu-divider"></div>
+
+                    <button className="account-menu-item" type="button" role="menuitem">
+                      <span className="account-menu-icon account-menu-icon-info" aria-hidden="true"></span>
+                      Help center
+                    </button>
+                    <button className="account-menu-item" type="button" role="menuitem" onClick={handleSignOut}>
+                      <span className="account-menu-icon account-menu-icon-signout" aria-hidden="true"></span>
+                      Sign out
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+            )}
           </div>
         </header>
 
@@ -331,12 +486,7 @@ export default function Home() {
           </form>
         </section>
 
-        <section className="categories" aria-label="Startup categories">
-          <div className="section-title">
-            <h2>Categories</h2>
-            <a href="#">See All -&gt;</a>
-          </div>
-
+        <section className="categories" aria-label="Market signals">
           <div className="news-grid">
             <article className="news-card">
               <div className="news-media media-ai">
